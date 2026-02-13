@@ -1,12 +1,14 @@
 <html>
 	<head>
-		<title>Tapety - Catty</title>
+		<title>Oficjalna strona Cattiego</title>
 		<meta charset="UTF-8">
-		<meta property="og:title" content="Tapety - Catty" />
+		<meta property="og:title" content="Oficjalna strona Cattiego" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="http://youngcatty.ovh" />
 		<meta property="og:image" content="http://youngcatty.ovh/logo.png" />
 		<meta property="og:description" content="youngcatty.ovh" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="theme-color" content="#9e1adb">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,38 +17,470 @@
 		<!-- Include this to make the og:image larger -->
 		<meta name="twitter:card" content="summary_large_image">
 		<style>
-			body {
-				padding: 0px;
-				margin: 0px;
-				font-family: "Google Sans", sans-serif;
+		:root {
+		  --bg-main: #0b1020;
+		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+		  --text-main: #f1f1f1;
+		  --accent: #e10600;
+		  --card-bg: rgba(255,255,255,0.08);
+		  --table-bg: rgba(255,255,255,0.06);
+		  --table-border: rgba(255,255,255,0.15);
+		}
+
+		* {
+		  box-sizing: border-box;
+		}
+
+		body {
+		  margin: 0;
+		  font-family: "Google Sans", sans-serif;
+		  background: var(--bg-main);
+		  color: var(--text-main);
+		}
+
+		/* ===== LINKS ===== */
+		a {
+		  color: var(--text-main);
+		  text-decoration: none;
+		}
+		a:hover {
+		  color: var(--accent);
+		}
+
+		/* ===== HEADER ===== */
+		.header {
+		  display: flex;
+		  align-items: center;
+		  justify-content: space-between;
+		  padding: 10px 15px;
+		}
+
+		.logo {
+		  width: 60px;
+		  border-radius: 50%;
+		}
+
+		/* ===== MENU ===== */
+		.nav {
+		  display: flex;
+		  gap: 20px;
+		}
+
+		.nav a {
+		  font-size: 18px;
+		}
+
+		/* ===== HAMBURGER ===== */
+		.hamburger {
+		  display: none;
+		  flex-direction: column;
+		  gap: 5px;
+		  cursor: pointer;
+		}
+
+		.hamburger span {
+		  width: 25px;
+		  height: 3px;
+		  background: white;
+		}
+
+		/* ===== HERO ===== */
+		.hero {
+		  height: 340px;
+		  background: var(--bg-gradient), url("background.jpg");
+		  background-blend-mode: overlay;
+		  background-size: cover;
+		  background-position: center;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		}
+
+		.hero-content {
+		  padding: 30px 40px;
+		  border-radius: 20px;
+		  background: rgba(255,255,255,0.08);
+		  backdrop-filter: blur(10px);
+		  border: 1px solid rgba(255,255,255,0.15);
+		  text-align: center;
+		}
+
+		.hero h1 {
+		  font-size: 36px;
+		  text-shadow: 0 0 15px black;
+		}
+
+		.hero p {
+		  font-size: 18px;
+		}
+
+		/* ===== MOBILE ===== */
+		@media (max-width: 768px) {
+
+		  .nav {
+			display: none;
+			flex-direction: column;
+			background: #0f1530;
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+		  }
+
+		  .nav.active {
+			display: flex;
+		  }
+
+		  .hamburger {
+			display: flex;
+		  }
+
+		  .hero h1 {
+			font-size: 26px;
+		  }
+		}
+		</style>
+		<style>
+		/* ===== DESKTOP MENU ANIMATION ===== */
+		.nav {
+		  position: relative;
+		}
+
+		.nav a {
+		  position: relative;
+		  padding: 5px 0;
+		}
+
+		/* underline animation */
+		.nav a::after {
+		  content: "";
+		  position: absolute;
+		  left: 0;
+		  bottom: -3px;
+		  width: 100%;
+		  height: 2px;
+		  background: var(--accent);
+		  transform: scaleX(0);
+		  transform-origin: left;
+		  transition: transform 0.3s ease;
+		}
+
+		.nav a:hover::after {
+		  transform: scaleX(1);
+		}
+		/* desktop fade-in */
+		@media (min-width: 769px) {
+		  .nav {
+			opacity: 0;
+			transform: translateY(-5px);
+			animation: navFade 0.5s ease forwards;
+		  }
+
+		  @keyframes navFade {
+			to {
+			  opacity: 1;
+			  transform: translateY(0);
 			}
-			
-			a {
-				color: black;
-				text-decoration: none;
-			}
-			
-			a:hover {
-				color: #4a4a48;
-			}
+		  }
+		}
+		.nav a:active {
+		  transform: scale(0.95);
+		}
+		</style>
+		<style>
+		/* ===== MOBILE FIX ===== */
+		@media (max-width: 768px) {
+
+		  .nav {
+			display: flex;
+			flex-direction: column;
+			background: #0f1530;
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+
+			opacity: 0;
+			transform: translateY(-10px);
+			pointer-events: none;
+			transition: 0.3s ease;
+		  }
+
+		  .nav.active {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
+		  }
+		}
+		</style>
+		<style>
+		/* ===== HAMBURGER ANIMATION ===== */
+		.hamburger span {
+		  transition: 0.3s;
+		}
+
+		.hamburger.active span:nth-child(1) {
+		  transform: rotate(45deg) translate(5px, 5px);
+		}
+
+		.hamburger.active span:nth-child(2) {
+		  opacity: 0;
+		}
+
+		.hamburger.active span:nth-child(3) {
+		  transform: rotate(-45deg) translate(6px, -6px);
+		}
+		</style>
+		<style>
+		:root {
+		  --bg-main: #0b1020;
+		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+		  --text-main: #f1f1f1;
+		  --accent: #e10600;
+		}
+
+		.light {
+		  --bg-main: #f2f2f2;
+		  --bg-gradient: linear-gradient(135deg, #eaeaea, #cfcfcf, #ffb3b3);
+		  --text-main: #111;
+		  --accent: #c40000;
+		  --card-bg: #ffffff;
+		  --table-bg: #f1f1f1;
+		  --table-border: #cccccc;
+		}
+		:root {
+		  --card-bg: rgba(255, 255, 255, 0.05);
+		  --table-bg: rgba(255, 255, 255, 0.03);
+		  --table-border: rgba(255, 255, 255, 0.1);
+		}
+
+		.light {
+		  --card-bg: #ffffff;
+		  --table-bg: #f3f3f3;
+		  --table-border: #d0d0d0;
+		}
+		</style>
+		<style>
+		.theme-btn {
+		  background: none;
+		  border: none;
+		  font-size: 22px;
+		  cursor: pointer;
+		  color: var(--text-main);
+		}
+		</style>
+		<style>
+		/* ===== ENTRY ANIMATION ===== */
+		.fade-in {
+		  opacity: 0;
+		  transform: translateY(30px);
+		  transition: opacity 0.8s ease, transform 0.8s ease;
+		}
+
+		.fade-in.visible {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
+		</style>
+		<style>
+		footer {
+		  margin-top: 80px;
+		  padding: 30px;
+		  text-align: center;
+		  background: rgba(0,0,0,0.3);
+		  font-size: 14px;
+		}
+		</style>
+		<style>
+		footer {
+		  margin-top: 80px;
+		  padding: 30px;
+		  text-align: center;
+		  background: rgba(0,0,0,0.3);
+		  font-size: 14px;
+		}
+		</style>
+		<style>
+		.wallpapers {
+		  display: flex;
+		  justify-content: center;
+		  margin: 80px 20px;
+		}
+
+		.wallpapers-box {
+		  max-width: 600px;
+		  padding: 40px;
+		  text-align: center;
+		  background: var(--card-bg);
+		  border-radius: 20px;
+		  backdrop-filter: blur(10px);
+		  border: 1px solid var(--table-border);
+		}
+
+		.wallpapers-box h2 {
+		  font-size: 28px;
+		  margin-bottom: 15px;
+		}
+
+		.wallpapers-box p {
+		  font-size: 17px;
+		  opacity: 0.8;
+		  margin-bottom: 30px;
+		}
+
+		.wallpaper-actions {
+		  display: flex;
+		  gap: 15px;
+		  justify-content: center;
+		  flex-wrap: wrap;
+		}
+
+		.btn {
+		  padding: 10px 20px;
+		  border-radius: 12px;
+		  background: var(--accent);
+		  color: white;
+		  font-weight: 600;
+		  transition: 0.3s ease;
+		}
+
+		.btn:hover {
+		  opacity: 0.85;
+		}
+
+		.btn.secondary {
+		  background: transparent;
+		  border: 1px solid var(--table-border);
+		}
 		</style>
 	</head>
 	<body>
-		<div>
-			<img style="margin:10px;border-radius:50px;" src="logo.png" width="80">
-			<div style="text-align:center;margin-top:-60px;font-size:30px;">
-				<a href="/">Strona główna</a> <a style="font-size:35px;">|</a> <a href="/omnie">O mnie</a> <a style="font-size:35px;">|</a> <a href="/poradniki">Poradniki</a> <a style="font-size:35px;">|</a> <a style="border:5px solid;padding:5px;" href="/tapety">Tapety</a> <a style="font-size:35px;">|</a> <a href="/linki">Linki</a>
-			</div>
-		</div>
-			<hr style="margin-top:35px;padding:5px;background-color:black;">
-			<div style="background-image:url('background.jpg');margin-top:-9px;height:400px;">
-			<center><a style="color:white;font-size:50px;position:relative;top:170px;text-shadow: 4px 4px 13px rgba(66, 68, 90, 1);">Oficjalna strona Cattiego</a><p style="color:white;font-size:20px;position:relative;top:170px;text-shadow: 4px 4px 13px rgba(66, 68, 90, 1);">Tapety</p></center>
-		</div>
-		<h1 style="margin-left:10px;">Tapety</h1>
-		<a>Chwilowo brak</a>
+		<div id="scrollBar"></div>
+		<header class="header">
+		  <img src="logo.png" class="logo" alt="Catty logo">
 
+		  <nav class="nav" id="nav">
+			<a href="/">Strona główna</a>
+			<a href="/omnie">O mnie</a>
+			<a href="/poradniki">Poradniki</a>
+			<a href="/tapety">Tapety</a>
+		  </nav>
+
+		  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		  </div>
+
+		  <button class="theme-btn" onclick="toggleTheme()" aria-label="Zmień motyw">
+			<svg id="themeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+				 xmlns="http://www.w3.org/2000/svg">
+			  <path d="M21 12.8A9 9 0 1111.2 3
+					   7 7 0 0021 12.8z"
+					fill="currentColor"/>
+			</svg>
+		  </button>
+		</header>
+
+		<div class="hero">
+		  <div class="hero-content fade-in">
+			<h1>Oficjalna strona Cattiego</h1>
+			<p>Tapety</p>
+		  </div>
+		</div>
+		</div>
+
+		<section class="wallpapers fade-in">
+		  <div class="wallpapers-box">
+			<h2>🚧 Tapety w drodze!</h2>
+			<p>
+			  Aktualnie nie mamy jeszcze żadnych tapet na stanie,
+			  ale coś grubego już się renderuje 👀🔥
+			</p>
+
+			<div class="wallpaper-actions">
+			  <a href="/" class="btn">Wróć na stronę główną</a>
+			  <a href="/poradniki" class="btn secondary">Sprawdź poradniki</a>
+			</div>
+		  </div>
+		</section>
+		
+		<script>
+		function toggleMenu() {
+		  document.getElementById("nav").classList.toggle("active");
+		  document.getElementById("hamburger").classList.toggle("active");
+		}
+
+		function toggleMenu() {
+		  document.getElementById("nav").classList.toggle("active");
+		  document.getElementById("hamburger").classList.toggle("active");
+		}
+
+		function toggleTheme() {
+		  document.body.classList.toggle("light");
+
+		  const isLight = document.body.classList.contains("light");
+		  localStorage.setItem("theme", isLight ? "light" : "dark");
+		  updateIcon();
+		}
+
+		function updateIcon() {
+		  const icon = document.getElementById("themeIcon");
+
+		  if (document.body.classList.contains("light")) {
+			icon.innerHTML = `
+			  <circle cx="12" cy="12" r="5" fill="currentColor"/>
+			  <g stroke="currentColor" stroke-width="2">
+				<line x1="12" y1="1" x2="12" y2="4"/>
+				<line x1="12" y1="20" x2="12" y2="23"/>
+				<line x1="1" y1="12" x2="4" y2="12"/>
+				<line x1="20" y1="12" x2="23" y2="12"/>
+			  </g>`;
+		  } else {
+			icon.innerHTML = `
+			  <path d="M21 12.8A9 9 0 1111.2 3
+					   7 7 0 0021 12.8z"
+					fill="currentColor"/>`;
+		  }
+		}
+
+		window.onload = () => {
+		  if (localStorage.getItem("theme") === "light") {
+			document.body.classList.add("light");
+		  }
+		  updateIcon();
+		};
+
+		window.onload = () => {
+		  if (localStorage.getItem("theme") === "light") {
+			document.body.classList.add("light");
+			document.querySelector(".theme-btn").textContent = "☀️";
+		  }
+		};
+		const observer = new IntersectionObserver(entries => {
+		  entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			  entry.target.classList.add("visible");
+			}
+		  });
+		}, {
+		  threshold: 0.2
+		});
+
+		document.querySelectorAll(".fade-in").forEach(el => {
+		  observer.observe(el);
+		});
+		</script>
+
+		<footer>
+		  © 2026 Catty • Made with ❤️ + HTML/CSS  
+		  <br>
+		  <a href="https://www.youtube.com/@CattiśUwU">YouTube</a> • <a href="https://discord.gg/sFk955h3zf">Discord</a> • <a href="https://instagram.com/youngcattyxd">Instagram</a>
+		</footer>
 	</body>
 </html>
-
-
 
