@@ -1,60 +1,826 @@
 <html>
 	<head>
-		<title>Strona główna - Catty</title>
+		<title>Catty</title>
 		<meta charset="UTF-8">
-		<meta property="og:title" content="Strona główna - Catty" />
+		<meta property="og:title" content="Catty" />
+		<meta name="description" content="Catty – technologia, retro, audio, gaming, poradniki i społeczność Discord.">
+		<meta name="keywords" content="Catty, technologia, retro, Xbox 360, FLAC, DTS, Windows XP, gaming">
+		<meta name="author" content="Catty">
+		<link rel="canonical" href="https://youngcatty.ovh">
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="http://youngcatty.ovh" />
 		<meta property="og:image" content="http://youngcatty.ovh/logo.png" />
 		<meta property="og:description" content="youngcatty.ovh" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="theme-color" content="#9e1adb">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
-
+		
 		<!-- Include this to make the og:image larger -->
 		<meta name="twitter:card" content="summary_large_image">
 		<style>
-			body {
-				padding: 0px;
-				margin: 0px;
-				font-family: "Google Sans", sans-serif;
+		:root {
+		  --bg-main: #0b1020;
+		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+		  --text-main: #f1f1f1;
+		  --accent: #e10600;
+		--card-bg: rgba(255,255,255,0.08);
+		--table-bg: rgba(255,255,255,0.06);
+		--table-border: rgba(255,255,255,0.15);
+		}
+
+		* {
+		  box-sizing: border-box;
+		}
+
+		body {
+		  margin: 0;
+		  font-family: "Google Sans", sans-serif;
+		  background: var(--bg-main);
+		  color: var(--text-main);
+		}
+
+		/* ===== LINKS ===== */
+		a {
+		  color: var(--text-main);
+		  text-decoration: none;
+		}
+		a:hover {
+		  color: var(--accent);
+		}
+
+		/* ===== HEADER ===== */
+		.header {
+		  display: flex;
+		  align-items: center;
+		  justify-content: space-between;
+		  padding: 10px 15px;
+		}
+
+		.logo {
+		  width: 60px;
+		  border-radius: 50%;
+		}
+
+		/* ===== MENU ===== */
+		.nav {
+		  display: flex;
+		  gap: 20px;
+		}
+
+		.nav a {
+		  font-size: 18px;
+		}
+
+		/* ===== HAMBURGER ===== */
+		.hamburger {
+		  display: none;
+		  flex-direction: column;
+		  gap: 5px;
+		  cursor: pointer;
+		}
+
+		.hamburger span {
+		  width: 25px;
+		  height: 3px;
+		  background: white;
+		}
+
+		/* ===== HERO ===== */
+		.hero {
+		  height: 340px;
+		  background: var(--bg-gradient), url("background.jpg");
+		  background-blend-mode: overlay;
+		  background-size: cover;
+		  background-position: center;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		}
+
+		.hero-content {
+		  padding: 30px 40px;
+		  border-radius: 20px;
+		  background: rgba(255,255,255,0.08);
+		  backdrop-filter: blur(10px);
+		  border: 1px solid rgba(255,255,255,0.15);
+		  text-align: center;
+		}
+
+		.hero h1 {
+		  font-size: 36px;
+		  text-shadow: 0 0 15px black;
+		}
+
+		.hero p {
+		  font-size: 18px;
+		}
+
+		/* ===== MOBILE ===== */
+		@media (max-width: 768px) {
+
+		  .nav {
+			display: none;
+			flex-direction: column;
+			background: #0f1530;
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+		  }
+
+		  .nav.active {
+			display: flex;
+		  }
+
+		  .hamburger {
+			display: flex;
+		  }
+
+		  .hero h1 {
+			font-size: 26px;
+		  }
+		}
+		</style>
+		<style>
+		/* ===== DESKTOP MENU ANIMATION ===== */
+		.nav {
+		  position: relative;
+		}
+
+		.nav a {
+		  position: relative;
+		  padding: 5px 0;
+		}
+
+		/* underline animation */
+		.nav a::after {
+		  content: "";
+		  position: absolute;
+		  left: 0;
+		  bottom: -3px;
+		  width: 100%;
+		  height: 2px;
+		  background: var(--accent);
+		  transform: scaleX(0);
+		  transform-origin: left;
+		  transition: transform 0.3s ease;
+		}
+
+		.nav a:hover::after {
+		  transform: scaleX(1);
+		}
+		/* desktop fade-in */
+		@media (min-width: 769px) {
+		  .nav {
+			opacity: 0;
+			transform: translateY(-5px);
+			animation: navFade 0.5s ease forwards;
+		  }
+
+		  @keyframes navFade {
+			to {
+			  opacity: 1;
+			  transform: translateY(0);
 			}
-			
-			a {
-				color: black;
-				text-decoration: none;
-			}
-			
-			a:hover {
-				color: #4a4a48;
-			}
+		  }
+		}
+		.nav a:active {
+		  transform: scale(0.95);
+		}
+		</style>
+		<style>
+		/* ===== ENTRY ANIMATION ===== */
+		.fade-in {
+		  opacity: 0;
+		  transform: translateY(30px);
+		  transition: opacity 0.8s ease, transform 0.8s ease;
+		}
+
+		.fade-in.visible {
+		  opacity: 1;
+		  transform: translateY(0);
+		}		
+		</style>
+		<style>
+		/* ===== MOBILE FIX ===== */
+		@media (max-width: 768px) {
+
+		  .nav {
+			display: flex;
+			flex-direction: column;
+			background: #0f1530;
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+
+			opacity: 0;
+			transform: translateY(-10px);
+			pointer-events: none;
+			transition: 0.3s ease;
+		  }
+
+		  .nav.active {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
+		  }
+		}
+		</style>
+		<style>
+		img {
+		  max-width: 100%;
+		  height: auto;
+		}
+		</style>
+		<style>
+		.neon:hover {
+		  text-shadow: 0 0 8px var(--accent),
+					   0 0 16px var(--accent);
+		}
+		</style>
+		<style>
+		/* ===== HAMBURGER ANIMATION ===== */
+		.hamburger span {
+		  transition: 0.3s;
+		}
+
+		.hamburger.active span:nth-child(1) {
+		  transform: rotate(45deg) translate(5px, 5px);
+		}
+
+		.hamburger.active span:nth-child(2) {
+		  opacity: 0;
+		}
+
+		.hamburger.active span:nth-child(3) {
+		  transform: rotate(-45deg) translate(6px, -6px);
+		}
+		</style>
+		<style>
+		:root {
+		  --bg-main: #0b1020;
+		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+		  --text-main: #f1f1f1;
+		  --accent: #e10600;
+		}
+
+		.light {
+		  --bg-main: #f2f2f2;
+		  --bg-gradient: linear-gradient(135deg, #eaeaea, #cfcfcf, #ffb3b3);
+		  --text-main: #111;
+		  --accent: #c40000;
+		  --card-bg: #ffffff;
+		  --table-bg: #f1f1f1;
+		  --table-border: #cccccc;
+		}
+		</style>
+		<style>
+		.theme-btn {
+		  background: none;
+		  border: none;
+		  font-size: 22px;
+		  cursor: pointer;
+		  color: var(--text-main);
+		}
+		</style>
+		<style>
+		/* ===== DISCORD CARD ===== */
+		.discord-card {
+		  max-width: 900px;
+		  margin: 40px auto;
+		  padding: 25px;
+		  background: var(--card-bg);
+		  border-radius: 16px;
+		  border: 1px solid var(--table-border);
+		  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+		  display: flex;
+		  align-items: center;
+		  gap: 25px;
+		}
+
+		.discord-card img {
+		  width: 80px;
+		}
+
+		.discord-card h2 {
+		  margin: 0 0 10px 0;
+		}
+
+		.discord-btn {
+		  display: inline-block;
+		  margin-top: 10px;
+		  padding: 10px 18px;
+		  background: #5865F2;
+		  color: white;
+		  border-radius: 10px;
+		  font-weight: bold;
+		  transition: transform 0.2s, box-shadow 0.2s;
+		}
+
+		.discord-btn:hover {
+		  transform: translateY(-2px);
+		  box-shadow: 0 6px 20px rgba(88,101,242,0.5);
+		}
+
+		/* mobile */
+		@media (max-width: 768px) {
+		  .discord-card {
+			flex-direction: column;
+			text-align: center;
+		  }
+		}
+		</style>
+		<style>
+		/* ===== NEWS ===== */
+		.news-section {
+		  max-width: 1000px;
+		  margin: 40px auto;
+		}
+
+		.news-grid {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		  gap: 20px;
+		}
+
+		.news-card {
+		  background: var(--card-bg);
+		  border: 1px solid var(--table-border);
+		  border-radius: 14px;
+		  padding: 20px;
+		  transition: transform 0.2s, box-shadow 0.2s;
+		}
+
+		.news-card:hover {
+		  transform: translateY(-4px);
+		  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+		}
+
+		.news-card h3 {
+		  margin-top: 0;
+		}
+
+		.news-tag {
+		  display: inline-block;
+		  font-size: 12px;
+		  padding: 4px 8px;
+		  border-radius: 6px;
+		  background: var(--accent);
+		  color: white;
+		  margin-bottom: 10px;
+		}
+		</style>
+		<style>
+		/* ===== FEATURES ===== */
+		.features {
+		  max-width: 1100px;
+		  margin: 50px auto;
+		  display: grid;
+		  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		  gap: 20px;
+		}
+
+		.feature-card {
+		  background: var(--card-bg);
+		  border: 1px solid var(--table-border);
+		  border-radius: 16px;
+		  padding: 25px;
+		  text-align: center;
+		  transition: transform 0.25s, box-shadow 0.25s;
+		}
+
+		.feature-card:hover {
+		  transform: translateY(-6px);
+		  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+		}
+
+		.feature-icon {
+		  font-size: 40px;
+		  margin-bottom: 15px;
+		}
+		</style>
+		<style>
+		/* ===== STATS ===== */
+		.stats {
+		  max-width: 900px;
+		  margin: 50px auto;
+		  display: flex;
+		  justify-content: space-around;
+		  text-align: center;
+		}
+
+		.stat h3 {
+		  font-size: 36px;
+		  margin: 0;
+		  color: var(--accent);
+		}
+
+		@media (max-width: 768px) {
+		  .stats {
+			flex-direction: column;
+			gap: 20px;
+		  }
+		}
+		</style>
+		<style>
+		.contact-links {
+		  display: flex;
+		  gap: 15px;
+		  flex-wrap: wrap;
+		  margin-top: 15px;
+
+		  justify-content: center;   /* wyśrodkowanie poziome */
+		  align-items: center;       /* wyśrodkowanie pionowe */
+		}
+		
+		.contact-btn {
+		  padding: 10px 18px;
+		  border-radius: 12px;
+		  background: var(--card-bg);
+		  border: 1px solid var(--table-border);
+		  transition: 0.3s ease;
+		  font-weight: 600;
+		}
+
+		.contact-btn:hover {
+		  background: var(--accent);
+		  color: white;
+		}
+
+		.contact-btn.signal:hover {
+		  background: #3a76f0;
+		}
+		</style>
+		<style>
+		.youtube-card {
+		  max-width: 900px;
+		  margin: 60px auto;
+		  padding: 25px;
+		  background: var(--card-bg);
+		  border-radius: 18px;
+		  border: 1px solid var(--table-border);
+		  display: flex;
+		  gap: 25px;
+		  align-items: center;
+		}
+
+		.youtube-card img {
+		  width: 120px;
+		  border-radius: 12px;
+		}
+
+		.yt-btn {
+		  display: inline-block;
+		  margin-top: 10px;
+		  padding: 10px 16px;
+		  background: #ff0000;
+		  color: white;
+		  border-radius: 10px;
+		  font-weight: bold;
+		}
+		</style>
+		<style>
+		.featured {
+		  max-width: 1000px;
+		  margin: 60px auto;
+		}
+
+		.featured-grid {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		  gap: 20px;
+		}
+
+		.featured-card {
+		  background: var(--card-bg);
+		  border-radius: 16px;
+		  padding: 20px;
+		  border: 1px solid var(--table-border);
+		}
+		</style>
+		<style>
+		.header {
+		  position: sticky;
+		  top: 0;
+		  z-index: 999;
+		  backdrop-filter: blur(10px);
+		  background: rgba(10,15,30,0.7);
+		  transition: transform 0.3s;
+		}
+
+		.header.hide {
+		  transform: translateY(-100%);
+		}
+		</style>
+		<style>
+		#scrollBar {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  height: 4px;
+		  background: var(--accent);
+		  width: 0%;
+		  z-index: 1000;
+		}
+		</style>
+		<style>
+		a, button {
+		  transition: transform 0.2s, box-shadow 0.2s;
+		}
+
+		a:hover, button:hover {
+		  transform: translateY(-2px);
+		}
+		</style>
+		<style>
+		.fade-stagger > * {
+		  opacity: 0;
+		  transform: translateY(20px);
+		  transition: 0.6s ease;
+		}
+
+		.fade-stagger.visible > * {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
+
+		.fade-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+		.fade-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+		.fade-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+		</style>
+		<style>
+		footer {
+		  margin-top: 80px;
+		  padding: 30px;
+		  text-align: center;
+		  background: rgba(0,0,0,0.3);
+		  font-size: 14px;
+		}
 		</style>
 	</head>
 	<body>
-		<div>
-			<img style="margin:10px;border-radius:50px;" src="logo.png" width="80">
-			<div style="text-align:center;margin-top:-60px;font-size:30px;">
-				<a style="border:5px solid;padding:5px;" href="/">Strona główna</a> <a style="font-size:35px;">|</a> <a href="/omnie">O mnie</a> <a style="font-size:35px;">|</a> <a href="/poradniki">Poradniki</a> <a style="font-size:35px;">|</a> <a href="/tapety">Tapety</a> <a style="font-size:35px;">|</a> <a href="/linki">Linki</a>
+		<div id="scrollBar"></div>
+		<header class="header">
+		  <img src="logo.png" class="logo" alt="Catty logo">
+
+		  <nav class="nav" id="nav">
+			<a href="/">Strona główna</a>
+			<a href="/omnie">O mnie</a>
+			<a href="/poradniki">Poradniki</a>
+			<a href="/tapety">Tapety</a>
+		  </nav>
+
+		  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		  </div>
+
+		  <button class="theme-btn" onclick="toggleTheme()" aria-label="Zmień motyw">
+			<svg id="themeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+				 xmlns="http://www.w3.org/2000/svg">
+			  <path d="M21 12.8A9 9 0 1111.2 3
+					   7 7 0 0021 12.8z"
+					fill="currentColor"/>
+			</svg>
+		  </button>
+		</header>
+
+		<div class="hero">
+		  <div class="hero-content fade-in">
+			<h1>Oficjalna strona Cattiego</h1>
+			<p>Technologia • Retro • Audio • Gaming</p>
+		  </div>
+		</div>
+
+		<div class="features fade-in">
+		  <div class="feature-card">
+			<div class="feature-icon">💻</div>
+			<h3>Technologia & Retro</h3>
+			<p>Windows XP/7, stare iPhone’y, Xbox 360, hardware i ciekawostki.</p>
+		  </div>
+
+		  <div class="feature-card">
+			<div class="feature-icon">🎮</div>
+			<h3>Gry & Homebrew</h3>
+			<p>Ścigałki, konsole 7. generacji, mody i scena homebrew.</p>
+		  </div>
+
+		  <div class="feature-card">
+			<div class="feature-icon">🎵</div>
+			<h3>Audio & Poradniki</h3>
+			<p>FLAC, DSD, DTS, fizyczne nośniki i konkretne poradniki.</p>
+		  </div>
+		</div>
+
+		<div class="stats fade-in">
+		  <div class="stat">
+			<h3>2008</h3>
+			<p>Rok urodzenia</p>
+		  </div>
+		  <div class="stat">
+			<h3>7 gen</h3>
+			<p>Ulubione konsole</p>
+		  </div>
+		  <div class="stat">
+			<h3>∞</h3>
+			<p>Zajawki na tech</p>
+		  </div>
+		</div>
+
+		<div class="news-section fade-in">
+		  <h2 class="neon">📰 Nowości</h2>
+
+		  <div class="news-grid">
+
+			<div class="news-card">
+			  <span class="news-tag">Poradnik</span>
+			  <h3>Remaster FLAC → DTS 5.1</h3>
+			  <p>
+				Jak zrobić własny remaster piosenki we FLAC-u do DTS 5.1 —
+				krok po kroku, bez magii.
+			  </p>
+			  <a href="/poradniki/remaster-flac-dts">Czytaj dalej →</a>
 			</div>
+
+			<!-- przyszłe nowości -->
+			<!--
+			<div class="news-card">
+			  ...
+			</div>
+			-->
+
+		  </div>
 		</div>
-			<hr style="margin-top:35px;padding:5px;background-color:black;">
-			<div style="background-image:url('background.jpg');margin-top:-9px;height:400px;">
-			<center><a style="color:white;font-size:50px;position:relative;top:170px;text-shadow: 4px 4px 13px rgba(66, 68, 90, 1);">Oficjalna strona Cattiego</a><p style="color:white;font-size:20px;position:relative;top:170px;text-shadow: 4px 4px 13px rgba(66, 68, 90, 1);">Strona główna</p></center>
+
+		<div class="featured fade-in">
+		  <h2>⭐ Polecane</h2>
+
+		  <div class="featured-grid">
+			<div class="featured-card">
+			  <h3>FLAC → DTS 5.1</h3>
+			  <p>Najbardziej techniczny poradnik audio na stronie.</p>
+			  <a href="/poradniki/remaster-flac-dts">Czytaj →</a>
+			</div>
+		</div>  
+
+		<div class="youtube-card fade-in">
+		  <img src="YouTube-logo.svg" alt="YouTube">
+
+		  <div>
+			<h2>🎥 YouTube</h2>
+			<p>
+			  Poradniki, retro tech, konsole, audio i rzeczy,
+			  których nie zobaczysz u typowych tech-tuberów.
+			</p>
+			<a class="yt-btn" href="https://youtube.com/@CattiśUwU" target="_blank">
+			  Zobacz kanał
+			</a>
+		  </div>
 		</div>
-		<h1 style="margin-left:10px;">Witajcie na oficjalnej stronie Cattiego!</h1>
-		<h2>Nowości</h2>
-		<a href="/poradniki/remaster-flac-dts">Jak zrobić remaster piosenki we FLACu do DTS 5.1</a>
-		<br>
-		<h1 style="margin-left:10px;">Informacje kontaktowe:</h1>
-		<a style="margin-left:15px;">Discord:</a> <a href="https://discord.gg/sFk955h3zf">https://discord.gg/sFk955h3zf</a><br>
-		<a style="margin-left:15px;">E-Mail:</a> <a href="mailto:youngcatty82@outlook.com">youngcatty82@outlook.com</a><br>
-		<a style="margin-left:15px;">Telegram:</a> <a>@catty800</a><br>
+
+		<div class="discord-card fade-in">
+		  <img src="discord-logo.svg" alt="Discord">
+
+		  <div>
+			<h2>💬 Mój serwer Discord</h2>
+			<p>
+			  Społeczność wokół technologii, gier, retro, muzyki i luźnych rozmów.
+			  Zero dram, zero toksyny.
+			</p>
+
+			<a class="discord-btn" href="https://discord.gg/sFk955h3zf" target="_blank">
+			  Dołącz do serwera
+			</a>
+		  </div>
+		</div>
+		
+		<div class="contact-links">
+		  <a href="mailto:youngcatty82@outlook.com" class="contact-btn">
+			📧 Email
+		  </a>
+
+		  <a href="https://signal.me/#eu/cattyuwu.63" 
+			 target="_blank" 
+			 class="contact-btn signal">
+			💬 Signal
+		  </a>
+		</div>
+		
+		<script>
+		/* ===== MENU ===== */
+		function toggleMenu() {
+		  document.getElementById("nav")?.classList.toggle("active");
+		  document.getElementById("hamburger")?.classList.toggle("active");
+		}
+
+		/* ===== THEME ===== */
+		function toggleTheme() {
+		  document.body.classList.toggle("light");
+		  const isLight = document.body.classList.contains("light");
+		  localStorage.setItem("theme", isLight ? "light" : "dark");
+		  updateIcon();
+		}
+
+		function updateIcon() {
+		  const icon = document.getElementById("themeIcon");
+		  if (!icon) return;
+
+		  if (document.body.classList.contains("light")) {
+			icon.innerHTML = `
+			  <circle cx="12" cy="12" r="5" fill="currentColor"/>
+			  <g stroke="currentColor" stroke-width="2">
+				<line x1="12" y1="1" x2="12" y2="4"/>
+				<line x1="12" y1="20" x2="12" y2="23"/>
+				<line x1="1" y1="12" x2="4" y2="12"/>
+				<line x1="20" y1="12" x2="23" y2="12"/>
+			  </g>`;
+		  } else {
+			icon.innerHTML = `
+			  <path d="M21 12.8A9 9 0 1111.2 3
+					   7 7 0 0021 12.8z"
+					fill="currentColor"/>`;
+		  }
+		}
+
+		/* ===== SCROLL PROGRESS ===== */
+		window.addEventListener("scroll", () => {
+		  const bar = document.getElementById("scrollBar");
+		  if (!bar) return;
+
+		  const scrollTop = document.documentElement.scrollTop;
+		  const height =
+			document.documentElement.scrollHeight -
+			document.documentElement.clientHeight;
+
+		  bar.style.width = (scrollTop / height) * 100 + "%";
+		});
+
+		/* ===== HIDE NAVBAR ON SCROLL ===== */
+		let lastScroll = 0;
+		window.addEventListener("scroll", () => {
+		  const header = document.querySelector(".header");
+		  if (!header) return;
+
+		  const current = window.scrollY;
+		  if (current > lastScroll && current > 100) {
+			header.classList.add("hide");
+		  } else {
+			header.classList.remove("hide");
+		  }
+		  lastScroll = current;
+		});
+
+		/* ===== ENTRY ANIMATIONS ===== */
+		const observer = new IntersectionObserver(entries => {
+		  entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			  entry.target.classList.add("visible");
+			}
+		  });
+		}, { threshold: 0.2 });
+
+		document.querySelectorAll(".fade-in").forEach(el => {
+		  observer.observe(el);
+		});
+
+		/* ===== INIT ===== */
+		document.addEventListener("DOMContentLoaded", () => {
+		  const savedTheme = localStorage.getItem("theme");
+
+		  if (savedTheme === "light") {
+			document.body.classList.add("light");
+		  } else if (!savedTheme) {
+			if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+			  document.body.classList.add("light");
+			}
+		  }
+
+		  updateIcon();
+		});
+		
+		function copyMail() {
+		  const text = "youngcatty82@outlook.com";
+		  navigator.clipboard.writeText(text).then(() => {
+			alert("Adres e-mail skopiowany ✨");
+		  });
+		}
+		</script>
+		</div>
+		
+		<footer>
+		  © 2026 Catty • Made with ❤️ + HTML/CSS  
+		  <br>
+		  <a href="https://www.youtube.com/@CattiśUwU">YouTube</a> • <a href="https://discord.gg/sFk955h3zf">Discord</a> • <a href="https://instagram.com/youngcattyxd">Instagram</a>
+		</footer>
+
 	</body>
-
 </html>
-
-
-
-
-
