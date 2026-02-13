@@ -7,6 +7,8 @@
 		<meta property="og:url" content="http://youngcatty.ovh" />
 		<meta property="og:image" content="http://youngcatty.ovh/logo.png" />
 		<meta property="og:description" content="youngcatty.ovh" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="theme-color" content="#9e1adb">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,78 +17,509 @@
 		<!-- Include this to make the og:image larger -->
 		<meta name="twitter:card" content="summary_large_image">
 		<style>
-			body {
-				padding: 0px;
-				margin: 0px;
-				font-family: "Google Sans", sans-serif;
+		:root {
+		  --bg-main: #0b1020;
+		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+		  --text-main: #f1f1f1;
+		  --accent: #e10600;
+		  --card-bg: rgba(255,255,255,0.08);
+		  --table-bg: rgba(255,255,255,0.06);
+		  --table-border: rgba(255,255,255,0.15);
+		}
+
+		* {
+		  box-sizing: border-box;
+		}
+
+		body {
+		  margin: 0;
+		  font-family: "Google Sans", sans-serif;
+		  background: var(--bg-main);
+		  color: var(--text-main);
+		}
+
+		/* ===== LINKS ===== */
+		a {
+		  color: var(--text-main);
+		  text-decoration: none;
+		}
+		a:hover {
+		  color: var(--accent);
+		}
+
+		/* ===== HEADER ===== */
+		.header {
+		  display: flex;
+		  align-items: center;
+		  justify-content: space-between;
+		  padding: 10px 15px;
+		}
+
+		.logo {
+		  width: 60px;
+		  border-radius: 50%;
+		}
+
+		/* ===== MENU ===== */
+		.nav {
+		  display: flex;
+		  gap: 20px;
+		}
+
+		.nav a {
+		  font-size: 18px;
+		}
+
+		/* ===== HAMBURGER ===== */
+		.hamburger {
+		  display: none;
+		  flex-direction: column;
+		  gap: 5px;
+		  cursor: pointer;
+		}
+
+		.hamburger span {
+		  width: 25px;
+		  height: 3px;
+		  background: white;
+		}
+
+		/* ===== HERO ===== */
+		.hero {
+		  height: 340px;
+		  background: var(--bg-gradient), url("background.jpg");
+		  background-blend-mode: overlay;
+		  background-size: cover;
+		  background-position: center;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		}
+
+		.hero-content {
+		  padding: 30px 40px;
+		  border-radius: 20px;
+		  background: rgba(255,255,255,0.08);
+		  backdrop-filter: blur(10px);
+		  border: 1px solid rgba(255,255,255,0.15);
+		  text-align: center;
+		}
+
+		.hero h1 {
+		  font-size: 36px;
+		  text-shadow: 0 0 15px black;
+		}
+
+		.hero p {
+		  font-size: 18px;
+		}
+
+		/* ===== MOBILE ===== */
+		@media (max-width: 768px) {
+
+		  .nav {
+			display: none;
+			flex-direction: column;
+			background: #0f1530;
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+		  }
+
+		  .nav.active {
+			display: flex;
+		  }
+
+		  .hamburger {
+			display: flex;
+		  }
+
+		  .hero h1 {
+			font-size: 26px;
+		  }
+		}
+		</style>
+		<style>
+		/* ===== DESKTOP MENU ANIMATION ===== */
+		.nav {
+		  position: relative;
+		}
+
+		.nav a {
+		  position: relative;
+		  padding: 5px 0;
+		}
+
+		/* underline animation */
+		.nav a::after {
+		  content: "";
+		  position: absolute;
+		  left: 0;
+		  bottom: -3px;
+		  width: 100%;
+		  height: 2px;
+		  background: var(--accent);
+		  transform: scaleX(0);
+		  transform-origin: left;
+		  transition: transform 0.3s ease;
+		}
+
+		.nav a:hover::after {
+		  transform: scaleX(1);
+		}
+		/* desktop fade-in */
+		@media (min-width: 769px) {
+		  .nav {
+			opacity: 0;
+			transform: translateY(-5px);
+			animation: navFade 0.5s ease forwards;
+		  }
+
+		  @keyframes navFade {
+			to {
+			  opacity: 1;
+			  transform: translateY(0);
 			}
-			
-			a {
-				color: black;
-				text-decoration: none;
-			}
-			
-			a:hover {
-				color: #4a4a48;
-			}
+		  }
+		}
+		.nav a:active {
+		  transform: scale(0.95);
+		}
+		</style>
+		<style>
+		/* ===== MOBILE FIX ===== */
+		@media (max-width: 768px) {
+
+		  .nav {
+			display: flex;
+			flex-direction: column;
+			background: #0f1530;
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+
+			opacity: 0;
+			transform: translateY(-10px);
+			pointer-events: none;
+			transition: 0.3s ease;
+		  }
+
+		  .nav.active {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
+		  }
+		}
+		</style>
+		<style>
+		/* ===== HAMBURGER ANIMATION ===== */
+		.hamburger span {
+		  transition: 0.3s;
+		}
+
+		.hamburger.active span:nth-child(1) {
+		  transform: rotate(45deg) translate(5px, 5px);
+		}
+
+		.hamburger.active span:nth-child(2) {
+		  opacity: 0;
+		}
+
+		.hamburger.active span:nth-child(3) {
+		  transform: rotate(-45deg) translate(6px, -6px);
+		}
+		</style>
+		<style>
+		:root {
+		  --bg-main: #0b1020;
+		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+		  --text-main: #f1f1f1;
+		  --accent: #e10600;
+		}
+
+		.light {
+		  --bg-main: #f2f2f2;
+		  --bg-gradient: linear-gradient(135deg, #eaeaea, #cfcfcf, #ffb3b3);
+		  --text-main: #111;
+		  --accent: #c40000;
+		  --card-bg: #ffffff;
+		  --table-bg: #f1f1f1;
+		  --table-border: #cccccc;
+		}
+		:root {
+		  --card-bg: rgba(255, 255, 255, 0.05);
+		  --table-bg: rgba(255, 255, 255, 0.03);
+		  --table-border: rgba(255, 255, 255, 0.1);
+		}
+
+		.light {
+		  --card-bg: #ffffff;
+		  --table-bg: #f3f3f3;
+		  --table-border: #d0d0d0;
+		}
+		</style>
+		<style>
+		.theme-btn {
+		  background: none;
+		  border: none;
+		  font-size: 22px;
+		  cursor: pointer;
+		  color: var(--text-main);
+		}
+		</style>
+		<style>
+		/* ===== ABOUT CARD ===== */
+		.about-card {
+		  max-width: 1000px;
+		  margin: 40px auto;
+		  padding: 25px;
+		  background: var(--card-bg);
+		  border-radius: 16px;
+		  border: 1px solid var(--table-border);
+		  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+		}
+		/* ===== LIKE TABLE ===== */
+		.likes-table {
+		  width: 100%;
+		  border-collapse: collapse;
+		  margin-top: 25px;
+		  background: var(--table-bg);
+		  border-radius: 12px;
+		  overflow: hidden;
+		}
+
+		.likes-table th,
+		.likes-table td {
+		  padding: 14px;
+		  vertical-align: top;
+		  color: var(--text-main);
+		}
+
+		.likes-table td {
+		  border-top: 1px solid var(--table-border);
+		}
+		
+		.likes {
+		  color: #2e7d32; /* green */
+		}
+
+		.dislikes {
+		  color: #c62828; /* red */
+		}
+
+		background: var(--card-bg);
+
+		/* ===== MOBILE ===== */
+		@media (max-width: 768px) {
+		  .likes-table,
+		  .likes-table tbody,
+		  .likes-table tr,
+		  .likes-table td,
+		  .likes-table th {
+			display: block;
+			width: 100%;
+		  }
+
+		  .likes-table th {
+			margin-top: 20px;
+		  }
+		}
+		</style>
+		<style>
+		/* ===== ENTRY ANIMATION ===== */
+		.fade-in {
+		  opacity: 0;
+		  transform: translateY(30px);
+		  transition: opacity 0.8s ease, transform 0.8s ease;
+		}
+
+		.fade-in.visible {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
+		</style>
+		<style>
+		footer {
+		  margin-top: 80px;
+		  padding: 30px;
+		  text-align: center;
+		  background: rgba(0,0,0,0.3);
+		  font-size: 14px;
+		}
 		</style>
 	</head>
 	<body>
-		<div>
-			<img style="margin:10px;border-radius:50px;" src="logo.png" width="80">
-			<div style="text-align:center;margin-top:-60px;font-size:30px;">
-				<a href="/">Strona główna</a> <a style="font-size:35px;">|</a> <a style="border:5px solid;padding:5px;" href="/omnie">O mnie</a> <a style="font-size:35px;">|</a> <a href="/poradniki">Poradniki</a> <a style="font-size:35px;">|</a> <a href="/tapety">Tapety</a> <a style="font-size:35px;">|</a> <a href="/linki">Linki</a>
-			</div>
+		<div id="scrollBar"></div>
+		<header class="header">
+		  <img src="logo.png" class="logo" alt="Catty logo">
+
+		  <nav class="nav" id="nav">
+			<a href="/">Strona główna</a>
+			<a href="/omnie">O mnie</a>
+			<a href="/poradniki">Poradniki</a>
+			<a href="/tapety">Tapety</a>
+		  </nav>
+
+		  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		  </div>
+
+		  <button class="theme-btn" onclick="toggleTheme()" aria-label="Zmień motyw">
+			<svg id="themeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+				 xmlns="http://www.w3.org/2000/svg">
+			  <path d="M21 12.8A9 9 0 1111.2 3
+					   7 7 0 0021 12.8z"
+					fill="currentColor"/>
+			</svg>
+		  </button>
+		</header>
+
+		<div class="hero">
+		  <div class="hero-content fade-in">
+			<h1>Oficjalna strona Cattiego</h1>
+			<p>O mnie</p>
+		  </div>
 		</div>
-			<hr style="margin-top:35px;padding:5px;background-color:black;">
-			<div style="background-image:url('background.jpg');margin-top:-9px;height:400px;">
-			<center><a style="color:white;font-size:50px;position:relative;top:170px;text-shadow: 4px 4px 13px rgba(66, 68, 90, 1);">Oficjalna strona Cattiego</a><p style="color:white;font-size:20px;position:relative;top:170px;text-shadow: 4px 4px 13px rgba(66, 68, 90, 1);">O mnie</p></center>
+
+		<div class="about-card fade-in">
+		  <img src="logo.png" width="160" style="display:block;margin:0 auto 20px;border-radius:20px;">
+
+		  <h1><center>Catty</center></h1>
+
+		  <p>
+			Cześć! Mam na imię Michał, ale w internetach jestem znany jako <b>Catty</b>.
+			Urodzony w 2008 roku. Jestem osobą ze spektrum autyzmu i cukrzycą typu 1.
+		  </p>
+
+		  <p>
+			Moją największą pasją jest <b>informatyka</b> (głównie hardware, ale też trochę software).
+			Interesuję się również muzyką rock i metal, grami (szczególnie ścigałkami),
+			jazdą rowerem, podróżami i filmami science-fiction.
+		  </p>
+
+		  <p>
+			Pomysł na stronę zrodził się po przeglądaniu stron znajomych
+			(szczególnie dzięki <b>Matisiowi</b>, który miał przyjemność mi ją zrobić ❤️).
+		  </p>
+		<table class="likes-table">
+		  <tr>
+			<th class="likes">👍 Lubię</th>
+			<th class="dislikes">👎 Nie lubię</th>
+		  </tr>
+		  <tr>
+			<td>
+			  • Muzykę rock i metal<br>
+			  • Windows XP i 7<br>
+			  • Marvela, Star Wars, filmy o wyścigach<br>
+			  • Homebrew Xboxa 360<br>
+			  • Język niemiecki<br>
+			  • FLAC i DSD<br>
+			  • Blu-ray, CD, SACD<br>
+			  • Konsole 7. generacji<br>
+			  • Windows 10 w stylu XP/7<br>
+			  • Stare iPhone’y (3G, 4, 5)<br>
+			  • <a href="http://fflynn.ovh">FFlynn</a>,
+				<a href="https://matisio.pl">Matisio</a>,
+				<a href="https://klovy.org">Klovy</a>,
+				K-Rys
+			</td>
+			<td>
+			  • Lenistwa (także mojego)<br>
+			  • Windows Vista i 11<br>
+			  • MP3 i OGG<br>
+			  • Subskrypcji streamingowych<br>
+			  • TikToka<br>
+			  • ChatGPT 😅<br>
+			  • Konsol 9. generacji<br>
+			  • Podwyżek cen RAM i SSD<br>
+			  • Produktów z Temu<br>
+			  • Dram w internecie<br>
+			  • Dezinformacji
+			</td>
+		  </tr>
+		</table>
 		</div>
-		<img style="margin:10px;" src="logo.png" width="200"><h1 style="margin-left:10px;">Kim jestem?</h1>
-Cześć! Mam na imię Michał, ale w internetach jestem znany jako Catty. Urodzony w 2008 roku.<br>
-Jestem osobą ze spektrum autyzmu i cukrzycą typu 1. Moją największą pasją jest informatyka <br>
-(głównie hardware, ale też trochę software). Co do innych pasji są to: słuchanie muzyki rock i metal, <br>
-granie na kompie (głównie w ścigałki), wycieczki rowerowe latem, podróżowanie po Polsce (czasami też <br>
-za granicą), oglądanie filmów science-fiction lub o wyścigach. Pomysł na stronę zrodził się przeglądając <br>
-strony moich znajomych (patrz co lubię) i też naszła mnie myśl: "Hmm... może ja też sobie taką stronkę <br>
-ogarnę". Dzięki jednemu z nich - Matisiowi - w końcu jest to możliwe 😊.<br><br>
-Lubię:<br>
-<ul>
-<li> Muzykę rock i metal<br>
-<li> Systemy Windows XP i 7<br>
-<li> Filmy Marvela, Star Warsy i o wyścigach<br>
-<li> Scenę homebrew Xboxa 360<br>
-<li> Język niemiecki<br>
-<li> Formaty FLAC i DSD<br>
-<li> Filmy/muzykę na nośnikach Blu-ray/CD lub SACD<br>
-<li> Konsole 7. generacji (Xbox 360, PS3)<br>
-<li> Windowsy 10 z wyglądem poprzedników (Relive7, Reunion7, Project Luna)<br>
-<li> Stare iPhone’y (3G, 4, 5)<br>
-<li> Moich dobrych znajomch: <a href="http://fflynn.ovh">FFlynn</a>, <a href="https://matisio.pl">Matisio</a>, <a href="https://klovy.org">Klovy</a>, K-Rys<br>
-</ul>
-Nie lubię:<br>
-<ul>
-<li> Lenistwa (w tym mojego)<br>
-<li> Systemów Windows Vista i 11<br>
-<li> Formatu MP3 lub OGG<br>
-<li> Subskrypcji za usługi streamingowe (Netflix, Spotify etc.)<br>
-<li> TikToka<br>
-<li> ChatGPT<br>
-<li> Konsol 9. generacji (PS5, Xbox Series, Switch 2)<br>
-<li> Podwyżek na RAM i SSDki<br>
-<li> Produktów z Temu<br>
-<li> Dram w internecie<br>
-<li> Dezinformacji</p>
-</ul>
-		<a style="margin-left:15px;">Discord:</a> <a href="https://discord.gg/sFk955h3zf">https://discord.gg/sFk955h3zf</a><br>
-		<a style="margin-left:15px;">E-Mail:</a> <a href="mailto:youngcatty82@outlook.com">youngcatty82@outlook.com</a><br>
-		<a style="margin-left:15px;">Telegram:</a> <a>@catty800</a><br>
+
+		<script>
+		function toggleMenu() {
+		  document.getElementById("nav").classList.toggle("active");
+		  document.getElementById("hamburger").classList.toggle("active");
+		}
+
+		function toggleMenu() {
+		  document.getElementById("nav").classList.toggle("active");
+		  document.getElementById("hamburger").classList.toggle("active");
+		}
+
+		function toggleTheme() {
+		  document.body.classList.toggle("light");
+
+		  const isLight = document.body.classList.contains("light");
+		  localStorage.setItem("theme", isLight ? "light" : "dark");
+		  updateIcon();
+		}
+
+		function updateIcon() {
+		  const icon = document.getElementById("themeIcon");
+
+		  if (document.body.classList.contains("light")) {
+			icon.innerHTML = `
+			  <circle cx="12" cy="12" r="5" fill="currentColor"/>
+			  <g stroke="currentColor" stroke-width="2">
+				<line x1="12" y1="1" x2="12" y2="4"/>
+				<line x1="12" y1="20" x2="12" y2="23"/>
+				<line x1="1" y1="12" x2="4" y2="12"/>
+				<line x1="20" y1="12" x2="23" y2="12"/>
+			  </g>`;
+		  } else {
+			icon.innerHTML = `
+			  <path d="M21 12.8A9 9 0 1111.2 3
+					   7 7 0 0021 12.8z"
+					fill="currentColor"/>`;
+		  }
+		}
+
+		window.onload = () => {
+		  if (localStorage.getItem("theme") === "light") {
+			document.body.classList.add("light");
+		  }
+		  updateIcon();
+		};
+
+		window.onload = () => {
+		  if (localStorage.getItem("theme") === "light") {
+			document.body.classList.add("light");
+			document.querySelector(".theme-btn").textContent = "☀️";
+		  }
+		};
+		const observer = new IntersectionObserver(entries => {
+		  entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			  entry.target.classList.add("visible");
+			}
+		  });
+		}, {
+		  threshold: 0.2
+		});
+
+		document.querySelectorAll(".fade-in").forEach(el => {
+		  observer.observe(el);
+		});
+		</script>
+
+		<footer>
+		  © 2026 Catty • Made with ❤️ + HTML/CSS  
+		  <br>
+		  <a href="https://www.youtube.com/@CattiśUwU">YouTube</a> • <a href="https://discord.gg/sFk955h3zf">Discord</a> • <a href="https://instagram.com/youngcattyxd">Instagram</a>
+		</footer>		
+
 	</body>
 </html>
-
-
-
-
-
-
-
