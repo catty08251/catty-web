@@ -1,8 +1,8 @@
 <html>
 	<head>
-		<title>O mnie - Catty</title>
+		<title>O mnie - YoungCatty.ovh</title>
 		<meta charset="UTF-8">
-		<meta property="og:title" content="Catty: Technologia, retro, audio i gaming" />
+		<meta property="og:title" content="Catty – technologia, retro, audio, gaming" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="http://youngcatty.ovh" />
 		<meta property="og:image" content="http://youngcatty.ovh/logo.png" />
@@ -17,341 +17,384 @@
 		<!-- Include this to make the og:image larger -->
 		<meta name="twitter:card" content="summary_large_image">
 		<style>
-		:root {
-		  --bg-main: #0b1020;
-		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
-		  --text-main: #f1f1f1;
-		  --accent: #e10600;
-		  --card-bg: rgba(255,255,255,0.08);
-		  --table-bg: rgba(255,255,255,0.06);
-		  --table-border: rgba(255,255,255,0.15);
-		}
+			:root {
+			  --bg-main: #0b1020;
+			  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+			  --text-main: #f1f1f1;
+			  --accent: #e10600;
+			--card-bg: rgba(255,255,255,0.08);
+			--table-bg: rgba(255,255,255,0.06);
+			--table-border: rgba(255,255,255,0.15);
+			}
 
-		* {
-		  box-sizing: border-box;
-		}
+			* {
+			  box-sizing: border-box;
+			}
 
-		body {
-		  margin: 0;
-		  font-family: "Google Sans", sans-serif;
-		  background: var(--bg-main);
-		  color: var(--text-main);
-		}
+			body {
+			  margin: 0;
+			  font-family: "Google Sans", sans-serif;
+			  background: var(--bg-main);
+			  color: var(--text-main);
+			}
 
-		/* ===== LINKS ===== */
-		a {
-		  color: var(--text-main);
-		  text-decoration: none;
-		}
-		a:hover {
-		  color: var(--accent);
-		}
+			/* ===== LINKS ===== */
+			a {
+			  color: var(--text-main);
+			  text-decoration: none;
+			}
+			a:hover {
+			  color: var(--accent);
+			}
 
-		/* ===== HEADER ===== */
-		.header {
-		  display: flex;
-		  align-items: center;
-		  justify-content: space-between;
-		  padding: 10px 15px;
-		}
+			/* ===== HEADER ===== */
+			.header {
+			  position: relative;
+			  z-index: 1000;
+			}
+			.header {
+			  display: flex;
+			  align-items: center;
+			  justify-content: space-between;
+			  padding: 10px 15px;
+			  color: var(--text-main);
+			}
 
-		.logo {
-		  width: 60px;
-		  border-radius: 50%;
-		}
+			.logo {
+			  width: 60px;
+			  border-radius: 50%;
+			}
 
-		/* ===== MENU ===== */
-		.nav {
-		  display: flex;
-		  gap: 20px;
-		}
+			/* ===== MENU ===== */
+			.nav {
+			  display: flex;
+			  gap: 20px;
+			  position: relative;
+			}
 
-		.nav a {
-		  font-size: 18px;
-		}
+			.nav a {
+			  font-size: 18px;
+			}
 
-		/* ===== HAMBURGER ===== */
-		.hamburger {
-		  display: none;
-		  flex-direction: column;
-		  gap: 5px;
-		  cursor: pointer;
-		}
+			/* ===== HAMBURGER ===== */
+			.hamburger {
+			  display: none;
+			  flex-direction: column;
+			  gap: 5px;
+			  cursor: pointer;
+			}
 
-		.hamburger span {
-		  width: 25px;
-		  height: 3px;
-		  background: white;
-		}
+			.hamburger span {
+			  width: 25px;
+			  height: 3px;
+			  background: white;
+			}
 
-		/* ===== HERO ===== */
-		.hero {
-		  height: 340px;
-		  background: var(--bg-gradient), url("background.jpg");
-		  background-blend-mode: overlay;
-		  background-size: cover;
-		  background-position: center;
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		}
+			/* ===== HERO ===== */
+			.hero {
+			  height: 340px;
+			  background: var(--bg-gradient), url("background.jpg");
+			  background-blend-mode: overlay;
+			  background-size: cover;
+			  background-position: center;
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			}
 
-		.hero-content {
-		  padding: 30px 40px;
-		  border-radius: 20px;
-		  background: rgba(255,255,255,0.08);
-		  backdrop-filter: blur(10px);
-		  border: 1px solid rgba(255,255,255,0.15);
-		  text-align: center;
-		}
+			.hero-content {
+			  padding: 30px 40px;
+			  border-radius: 20px;
+			  background: rgba(255,255,255,0.08);
+			  backdrop-filter: blur(10px);
+			  border: 1px solid rgba(255,255,255,0.15);
+			  text-align: center;
+			}
 
-		.hero h1 {
-		  font-size: 36px;
-		  text-shadow: 0 0 15px black;
-		}
+			.hero h1 {
+			  font-size: 36px;
+			  text-shadow: 0 0 15px black;
+			}
 
-		.hero p {
-		  font-size: 18px;
-		}
+			.hero p {
+			  font-size: 18px;
+			}
 
-		/* ===== MOBILE ===== */
-		@media (max-width: 768px) {
+			/* ===== MOBILE ===== */
+			@media (max-width: 768px) {
 
-		  .nav {
-			display: none;
-			flex-direction: column;
-			background: #0f1530;
-			position: absolute;
-			top: 70px;
-			right: 0;
-			width: 100%;
-			padding: 20px;
-			text-align: center;
-		  }
+			  .nav {
+				display: none;
+				flex-direction: column;
+				background: #0f1530;
+				position: absolute;
+				top: 70px;
+				right: 0;
+				width: 100%;
+				padding: 20px;
+				text-align: center;
+			  }
 
-		  .nav.active {
-			display: flex;
-		  }
+			  .nav.active {
+				display: flex;
+			  }
 
-		  .hamburger {
-			display: flex;
-		  }
+			  .hamburger {
+				display: flex;
+			  }
 
-		  .hero h1 {
-			font-size: 26px;
-		  }
-		}
-		</style>
-		<style>
-		/* ===== DESKTOP MENU ANIMATION ===== */
-		.nav {
-		  position: relative;
-		}
+			  .hero h1 {
+				font-size: 26px;
+			  }
 
-		.nav a {
-		  position: relative;
-		  padding: 5px 0;
-		}
+			  .header {
+				position: relative;
+			  }
 
-		/* underline animation */
-		.nav a::after {
-		  content: "";
-		  position: absolute;
-		  left: 0;
-		  bottom: -3px;
-		  width: 100%;
-		  height: 2px;
-		  background: var(--accent);
-		  transform: scaleX(0);
-		  transform-origin: left;
-		  transition: transform 0.3s ease;
-		}
+			  .hamburger {
+				display: flex;
+				z-index: 3000;
+			  }
 
-		.nav a:hover::after {
-		  transform: scaleX(1);
-		}
-		/* desktop fade-in */
-		@media (min-width: 769px) {
-		  .nav {
-			opacity: 0;
-			transform: translateY(-5px);
-			animation: navFade 0.5s ease forwards;
-		  }
+			  .hero h1 {
+				font-size: 26px;
+			  }
+			}
+			
+			/* ===== DESKTOP MENU ANIMATION ===== */
+			.nav {
+			  position: relative;
+			}
 
-		  @keyframes navFade {
-			to {
+			.nav a {
+			  position: relative;
+			  padding: 5px 0;
+			}
+
+			/* underline animation */
+			.nav a::after {
+			  content: "";
+			  position: absolute;
+			  left: 0;
+			  bottom: -3px;
+			  width: 100%;
+			  height: 2px;
+			  background: var(--accent);
+			  transform: scaleX(0);
+			  transform-origin: left;
+			  transition: transform 0.3s ease;
+			}
+
+			.nav a:hover::after {
+			  transform: scaleX(1);
+			}
+			/* desktop fade-in */
+			@media (min-width: 769px) {
+			  .nav {
+				opacity: 0;
+				transform: translateY(-5px);
+				animation: navFade 0.5s ease forwards;
+			  }
+
+			  @keyframes navFade {
+				to {
+				  opacity: 1;
+				  transform: translateY(0);
+				}
+			  }
+			}
+			.nav a:active {
+			  transform: scale(0.95);
+			}
+
+			/* ===== ENTRY ANIMATION ===== */
+			.fade-in {
+			  opacity: 0;
+			  transform: translateY(30px);
+			  transition: opacity 0.8s ease, transform 0.8s ease;
+			}
+
+			.fade-in.visible {
+			  opacity: 1;
+			  transform: translateY(0);
+			}		
+
+			/* ===== MOBILE FIX ===== */
+			@media (max-width: 768px) {
+
+			  .nav {
+				display: flex;
+				flex-direction: column;
+				background: #0f1530;
+				position: absolute;
+				top: 70px;
+				right: 0;
+				width: 100%;
+				padding: 20px;
+				text-align: center;
+
+				opacity: 0;
+				transform: translateY(-10px);
+				pointer-events: none;
+				transition: 0.3s ease;
+			  }
+
+			  .nav.active {
+				opacity: 1;
+				transform: translateY(0);
+				pointer-events: auto;
+			  }
+			}
+
+			img {
+			  max-width: 100%;
+			  height: auto;
+			}
+
+			.neon:hover {
+			  text-shadow: 0 0 8px var(--accent),
+						   0 0 16px var(--accent);
+			}
+
+			/* ===== HAMBURGER ANIMATION ===== */
+			.hamburger span {
+			  transition: 0.3s;
+			}
+
+			.hamburger.active span:nth-child(1) {
+			  transform: rotate(45deg) translate(5px, 5px);
+			}
+
+			.hamburger.active span:nth-child(2) {
+			  opacity: 0;
+			}
+
+			.hamburger.active span:nth-child(3) {
+			  transform: rotate(-45deg) translate(6px, -6px);
+			}
+
+			:root {
+			  --bg-main: #0b1020;
+			  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+			  --text-main: #f1f1f1;
+			  --accent: #e10600;
+			}
+
+			:root {
+			  --card-bg: rgba(255, 255, 255, 0.05);
+			  --table-bg: rgba(255, 255, 255, 0.03);
+			  --table-border: rgba(255, 255, 255, 0.1);
+			}
+
+			/* ===== ABOUT CARD ===== */
+			.about-card {
+			  max-width: 1000px;
+			  margin: 40px auto;
+			  padding: 25px;
+			  background: var(--card-bg);
+			  border-radius: 16px;
+			  border: 1px solid var(--table-border);
+			  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+			}
+			/* ===== LIKE TABLE ===== */
+			.likes-table {
+			  width: 100%;
+			  border-collapse: collapse;
+			  margin-top: 25px;
+			  background: var(--table-bg);
+			  border-radius: 12px;
+			  overflow: hidden;
+			}
+
+			.likes-table th,
+			.likes-table td {
+			  padding: 14px;
+			  vertical-align: top;
+			  color: var(--text-main);
+			}
+
+			.likes-table td {
+			  border-top: 1px solid var(--table-border);
+			}
+			
+			.likes {
+			  color: #2e7d32; /* green */
+			}
+
+			.dislikes {
+			  color: #c62828; /* red */
+			}
+
+			background: var(--card-bg);
+
+			/* ===== MOBILE ===== */
+			@media (max-width: 768px) {
+			  .likes-table,
+			  .likes-table tbody,
+			  .likes-table tr,
+			  .likes-table td,
+			  .likes-table th {
+				display: block;
+				width: 100%;
+			  }
+
+			  .likes-table th {
+				margin-top: 20px;
+			  }
+			}
+
+			#scrollBar {
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+			  height: 4px;
+			  background: var(--accent);
+			  width: 0%;
+			  z-index: 1000;
+			}
+
+			a, button {
+			  transition: transform 0.2s, box-shadow 0.2s;
+			}
+
+			a:hover, button:hover {
+			  transform: translateY(-2px);
+			}
+
+			.fade-stagger > * {
+			  opacity: 0;
+			  transform: translateY(20px);
+			  transition: 0.6s ease;
+			}
+
+			.fade-stagger.visible > * {
 			  opacity: 1;
 			  transform: translateY(0);
 			}
-		  }
-		}
-		.nav a:active {
-		  transform: scale(0.95);
-		}
-		</style>
-		<style>
-		/* ===== MOBILE FIX ===== */
-		@media (max-width: 768px) {
 
-		  .nav {
-			display: flex;
-			flex-direction: column;
-			background: #0f1530;
-			position: absolute;
-			top: 70px;
-			right: 0;
-			width: 100%;
-			padding: 20px;
-			text-align: center;
+			.fade-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+			.fade-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+			.fade-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
 
-			opacity: 0;
-			transform: translateY(-10px);
-			pointer-events: none;
-			transition: 0.3s ease;
-		  }
+			/* ===== ENTRY ANIMATION ===== */
+			.fade-in {
+			  opacity: 0;
+			  transform: translateY(30px);
+			  transition: opacity 0.8s ease, transform 0.8s ease;
+			}
 
-		  .nav.active {
-			opacity: 1;
-			transform: translateY(0);
-			pointer-events: auto;
-		  }
-		}
-		</style>
-		<style>
-		/* ===== HAMBURGER ANIMATION ===== */
-		.hamburger span {
-		  transition: 0.3s;
-		}
+			.fade-in.visible {
+			  opacity: 1;
+			  transform: translateY(0);
+			}
 
-		.hamburger.active span:nth-child(1) {
-		  transform: rotate(45deg) translate(5px, 5px);
-		}
-
-		.hamburger.active span:nth-child(2) {
-		  opacity: 0;
-		}
-
-		.hamburger.active span:nth-child(3) {
-		  transform: rotate(-45deg) translate(6px, -6px);
-		}
-		</style>
-		<style>
-		:root {
-		  --bg-main: #0b1020;
-		  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
-		  --text-main: #f1f1f1;
-		  --accent: #e10600;
-		}
-
-		.light {
-		  --bg-main: #f2f2f2;
-		  --bg-gradient: linear-gradient(135deg, #eaeaea, #cfcfcf, #ffb3b3);
-		  --text-main: #111;
-		  --accent: #c40000;
-		  --card-bg: #ffffff;
-		  --table-bg: #f1f1f1;
-		  --table-border: #cccccc;
-		}
-		:root {
-		  --card-bg: rgba(255, 255, 255, 0.05);
-		  --table-bg: rgba(255, 255, 255, 0.03);
-		  --table-border: rgba(255, 255, 255, 0.1);
-		}
-
-		.light {
-		  --card-bg: #ffffff;
-		  --table-bg: #f3f3f3;
-		  --table-border: #d0d0d0;
-		}
-		</style>
-		<style>
-		.theme-btn {
-		  background: none;
-		  border: none;
-		  font-size: 22px;
-		  cursor: pointer;
-		  color: var(--text-main);
-		}
-		</style>
-		<style>
-		/* ===== ABOUT CARD ===== */
-		.about-card {
-		  max-width: 1000px;
-		  margin: 40px auto;
-		  padding: 25px;
-		  background: var(--card-bg);
-		  border-radius: 16px;
-		  border: 1px solid var(--table-border);
-		  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-		}
-		/* ===== LIKE TABLE ===== */
-		.likes-table {
-		  width: 100%;
-		  border-collapse: collapse;
-		  margin-top: 25px;
-		  background: var(--table-bg);
-		  border-radius: 12px;
-		  overflow: hidden;
-		}
-
-		.likes-table th,
-		.likes-table td {
-		  padding: 14px;
-		  vertical-align: top;
-		  color: var(--text-main);
-		}
-
-		.likes-table td {
-		  border-top: 1px solid var(--table-border);
-		}
-		
-		.likes {
-		  color: #2e7d32; /* green */
-		}
-
-		.dislikes {
-		  color: #c62828; /* red */
-		}
-
-		background: var(--card-bg);
-
-		/* ===== MOBILE ===== */
-		@media (max-width: 768px) {
-		  .likes-table,
-		  .likes-table tbody,
-		  .likes-table tr,
-		  .likes-table td,
-		  .likes-table th {
-			display: block;
-			width: 100%;
-		  }
-
-		  .likes-table th {
-			margin-top: 20px;
-		  }
-		}
-		</style>
-		<style>
-		/* ===== ENTRY ANIMATION ===== */
-		.fade-in {
-		  opacity: 0;
-		  transform: translateY(30px);
-		  transition: opacity 0.8s ease, transform 0.8s ease;
-		}
-
-		.fade-in.visible {
-		  opacity: 1;
-		  transform: translateY(0);
-		}
-		</style>
-		<style>
-		footer {
-		  margin-top: 80px;
-		  padding: 30px;
-		  text-align: center;
-		  background: rgba(0,0,0,0.3);
-		  font-size: 14px;
-		}
+			footer {
+			  margin-top: 80px;
+			  padding: 30px;
+			  text-align: center;
+			  background: rgba(0,0,0,0.3);
+			  font-size: 14px;
+			}
 		</style>
 	</head>
 	<body>
@@ -364,6 +407,7 @@
 			<a href="/omnie">O mnie</a>
 			<a href="/poradniki">Poradniki</a>
 			<a href="/tapety">Tapety</a>
+			<a href="https://drive.google.com/drive/folders/1UEIm6xAsAndbct4cCFC8PRB3uuuXTdv-?usp=sharing" target="_blank">Baza plików</a>
 		  </nav>
 
 		  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -371,15 +415,6 @@
 			<span></span>
 			<span></span>
 		  </div>
-
-		  <button class="theme-btn" onclick="toggleTheme()" aria-label="Zmień motyw">
-			<svg id="themeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none"
-				 xmlns="http://www.w3.org/2000/svg">
-			  <path d="M21 12.8A9 9 0 1111.2 3
-					   7 7 0 0021 12.8z"
-					fill="currentColor"/>
-			</svg>
-		  </button>
 		</header>
 
 		<div class="hero">
@@ -418,31 +453,41 @@
 			<td>
 			  • Muzykę rock i metal<br>
 			  • Windows XP i 7<br>
-			  • Marvela, Star Wars, filmy o wyścigach<br>
+			  • Samochody BMW<br>
+			  • Filmy: <i>F1</i>, <i>Top Gun: Maverick</i>, <i>Predator: Strefa zagrożenia</i><br>
 			  • Homebrew Xboxa 360<br>
 			  • Język niemiecki<br>
 			  • FLAC i DSD<br>
 			  • Blu-ray, CD, SACD<br>
+			  • Dźwięk przestrzenny DTS 5.1<br>
 			  • Konsole 7. generacji<br>
-			  • Windows 10 w stylu XP/7<br>
+			  • Windows 10 w stylu XP/7 (np. Relive 7)<br>
+			  • HDR10 i Dolby Vision<br>
+			  • <i>Włatcuf móch</i><br>
 			  • Stare iPhone’y (3G, 4, 5)<br>
-			  • <a href="http://fflynn.ovh" target="_blank">FFlynn</a>,
-				<a href="https://matisio.pl" target="_blank">Matisio</a>,
-				<a href="https://klovy.org" target="_blank">Klovy</a>,
-				K-Rys
+			  • <a href="http://fflynn.ovh/">FFlynn</a>,
+				<a href="https://matisio.pl/">Matisio</a>,
+				<a href="https://klovy.systems/">Klovy</a>,
+				K-Rys<br>
+			  • Fotografię<br>
+			  • Stare reklamy (głównie <i>Serce i Rozum</i> oraz Tesco)
 			</td>
 			<td>
 			  • Lenistwa (także mojego)<br>
 			  • Windows Vista i 11<br>
+			  • Ekosystemu Apple'a<br>
 			  • MP3 i OGG<br>
 			  • Subskrypcji streamingowych<br>
 			  • TikToka<br>
-			  • ChatGPT 😅<br>
+			  • ChatGPT (tzn. jest OK, ale - moim zdaniem - Gemini lepsze)<br>
 			  • Konsol 9. generacji<br>
 			  • Podwyżek cen RAM i SSD<br>
 			  • Produktów z Temu<br>
 			  • Dram w internecie<br>
-			  • Dezinformacji
+			  • Dezinformacji<br>
+			  • Współczesnych reklam<br>
+			  • Gier z antycheatem (Fortnite, CS2)<br>
+			  • Polskiego rapu (OK, szanuję, ale to nie dla mnie)
 			</td>
 		  </tr>
 		</table>
@@ -452,19 +497,6 @@
 		function toggleMenu() {
 		  document.getElementById("nav").classList.toggle("active");
 		  document.getElementById("hamburger").classList.toggle("active");
-		}
-
-		function toggleMenu() {
-		  document.getElementById("nav").classList.toggle("active");
-		  document.getElementById("hamburger").classList.toggle("active");
-		}
-
-		function toggleTheme() {
-		  document.body.classList.toggle("light");
-
-		  const isLight = document.body.classList.contains("light");
-		  localStorage.setItem("theme", isLight ? "light" : "dark");
-		  updateIcon();
 		}
 
 		function updateIcon() {
@@ -494,12 +526,6 @@
 		  updateIcon();
 		};
 
-		window.onload = () => {
-		  if (localStorage.getItem("theme") === "light") {
-			document.body.classList.add("light");
-			document.querySelector(".theme-btn").textContent = "☀️";
-		  }
-		};
 		const observer = new IntersectionObserver(entries => {
 		  entries.forEach(entry => {
 			if (entry.isIntersecting) {
@@ -522,10 +548,4 @@
 		</footer>		
 
 	</body>
-
 </html>
-
-
-
-
-
