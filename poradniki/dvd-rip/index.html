@@ -1,0 +1,517 @@
+<html>
+	<head>
+		<title>Jak zgrać film z płyty DVD? - YoungCatty.ovh</title>
+		<meta charset="UTF-8">
+		<meta property="og:title" content="Jak zgrać film z płyty DVD? - Poradniki - Catty" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://youngcatty.ovh" />
+		<meta property="og:image" content="http://youngcatty.ovh/logo.png" />
+		<meta property="og:description" content="youngcatty.ovh" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#9e1adb">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+
+		<!-- Include this to make the og:image larger -->
+		<meta name="twitter:card" content="summary_large_image">
+			<style>
+			:root {
+			  --bg-main: #0b1020;
+			  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+			  --text-main: #f1f1f1;
+			  --accent: #e10600;
+			  --card-bg: rgba(255,255,255,0.08);
+			  --table-bg: rgba(255,255,255,0.06);
+			  --table-border: rgba(255,255,255,0.15);
+			}
+
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  margin: 0;
+			  font-family: "Google Sans", sans-serif;
+			  background: var(--bg-main);
+			  color: var(--text-main);
+			}
+
+			/* ===== LINKS ===== */
+			a {
+			  color: var(--text-main);
+			  text-decoration: none;
+			}
+			a:hover {
+			  color: var(--accent);
+			}
+
+			/* ===== HEADER ===== */
+			.header {
+			  display: flex;
+			  align-items: center;
+			  justify-content: space-between;
+			  color: var(--text-main);
+			  padding: 10px 15px;
+			  position: relative;
+			  z-index: 1000;
+			}
+
+			.logo {
+			  width: 60px;
+			  border-radius: 50%;
+			}
+
+			/* ===== MENU ===== */
+			.nav {
+			  display: flex;
+			  gap: 20px;
+			  position: relative;
+			  z-index: 999;
+			}
+
+			.nav a {
+			  font-size: 18px;
+			}
+
+			/* ===== HAMBURGER ===== */
+			.hamburger {
+			  display: none;
+			  flex-direction: column;
+			  gap: 5px;
+			  cursor: pointer;
+			  z-index: 1001;
+			}
+
+			.hamburger span {
+			  width: 25px;
+			  height: 3px;
+			  background: var(--text-main);
+			}
+
+			/* ===== HERO ===== */
+			.hero {
+			  height: 340px;
+			  background: var(--bg-gradient), url("background.jpg");
+			  background-blend-mode: overlay;
+			  background-size: cover;
+			  background-position: center;
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			}
+
+			.hero-content {
+			  padding: 30px 40px;
+			  border-radius: 20px;
+			  background: rgba(255,255,255,0.08);
+			  backdrop-filter: blur(10px);
+			  border: 1px solid rgba(255,255,255,0.15);
+			  text-align: center;
+			}
+
+			.hero h1 {
+			  font-size: 36px;
+			  text-shadow: 0 0 15px black;
+			}
+
+			.hero p {
+			  font-size: 18px;
+			}
+
+			/* ===== MOBILE ===== */
+			@media (max-width: 768px) {
+
+			  .nav {
+				display: none;
+				flex-direction: column;
+				background: #0f1530;
+				position: absolute;
+				top: 70px;
+				right: 0;
+				width: 100%;
+				padding: 20px;
+				text-align: center;
+			  }
+
+			  .nav.active {
+				display: flex;
+			  }
+
+			  .hamburger {
+				display: flex;
+			  }
+
+			  .hero h1 {
+				font-size: 26px;
+			  }
+			}
+
+			/* ===== DESKTOP MENU ANIMATION ===== */
+			.nav {
+			  position: relative;
+			}
+
+			.nav a {
+			  position: relative;
+			  padding: 5px 0;
+			}
+
+			/* underline animation */
+			.nav a::after {
+			  content: "";
+			  position: absolute;
+			  left: 0;
+			  bottom: -3px;
+			  width: 100%;
+			  height: 2px;
+			  background: var(--accent);
+			  transform: scaleX(0);
+			  transform-origin: left;
+			  transition: transform 0.3s ease;
+			}
+
+			.nav a:hover::after {
+			  transform: scaleX(1);
+			}
+			/* desktop fade-in */
+			@media (min-width: 769px) {
+			  .nav {
+				opacity: 0;
+				transform: translateY(-5px);
+				animation: navFade 0.5s ease forwards;
+			  }
+
+			  @keyframes navFade {
+				to {
+				  opacity: 1;
+				  transform: translateY(0);
+				}
+			  }
+			}
+			.nav a:active {
+			  transform: scale(0.95);
+			}
+
+			/* ===== MOBILE FIX ===== */
+			@media (max-width: 768px) {
+
+			  .nav {
+				display: flex;
+				flex-direction: column;
+				background: #0f1530;
+				position: absolute;
+				top: 70px;
+				right: 0;
+				width: 100%;
+				padding: 20px;
+				text-align: center;
+
+				opacity: 0;
+				transform: translateY(-10px);
+				pointer-events: none;
+				transition: 0.3s ease;
+			  }
+
+			  .nav.active {
+				opacity: 1;
+				transform: translateY(0);
+				pointer-events: auto;
+			  }
+			}
+
+			/* ===== HAMBURGER ANIMATION ===== */
+			.hamburger span {
+			  transition: 0.3s;
+			}
+
+			.hamburger.active span:nth-child(1) {
+			  transform: rotate(45deg) translate(5px, 5px);
+			}
+
+			.hamburger.active span:nth-child(2) {
+			  opacity: 0;
+			}
+
+			.hamburger.active span:nth-child(3) {
+			  transform: rotate(-45deg) translate(6px, -6px);
+			}
+
+			:root {
+			  --bg-main: #0b1020;
+			  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
+			  --text-main: #f1f1f1;
+			  --accent: #e10600;
+			}
+
+			.light {
+			  --card-bg: #ffffff;
+			  --table-bg: #f3f3f3;
+			  --table-border: #d0d0d0;
+			}
+
+			/* ===== ENTRY ANIMATION ===== */
+			.fade-in {
+			  opacity: 0;
+			  transform: translateY(30px);
+			  transition: opacity 0.8s ease, transform 0.8s ease;
+			}
+
+			.fade-in.visible {
+			  opacity: 1;
+			  transform: translateY(0);
+			}
+
+			footer {
+			  margin-top: 80px;
+			  padding: 30px;
+			  text-align: center;
+			  background: rgba(0,0,0,0.3);
+			  font-size: 14px;
+			}
+
+			.content {
+			  max-width: 1100px;
+			  margin: 40px auto;
+			  padding: 20px;
+			}
+
+			.content img {
+			  max-width: 100%;
+			  border-radius: 12px;
+			  border: 1px solid var(--table-border);
+			  margin: 20px 0;
+			}
+
+			.content h2 {
+			  margin-top: 50px;
+			  color: var(--accent);
+			}
+
+			.content ul {
+			  background: var(--card-bg);
+			  padding: 20px;
+			  border-radius: 15px;
+			  border: 1px solid var(--table-border);
+			}
+
+			.content iframe {
+			  max-width: 100%;
+			  border-radius: 12px;
+			  margin-top: 20px;
+			}
+
+			.tutorial h1 {
+			  font-size: 36px;
+			  margin-bottom: 20px;
+			}
+
+			.tutorial h2 {
+			  margin-top: 50px;
+			  color: var(--accent);
+			}
+
+			.tutorial p {
+			  line-height: 1.7;
+			  margin: 15px 0;
+			}
+
+			.tutorial img {
+			  max-width: 100%;
+			  border-radius: 15px;
+			  border: 1px solid var(--table-border);
+			  margin: 20px 0;
+			}
+
+			.tutorial ul {
+			  background: var(--card-bg);
+			  padding: 20px;
+			  border-radius: 20px;
+			  border: 1px solid var(--table-border);
+			}
+
+			.video-wrapper {
+			  position: relative;
+			  padding-bottom: 56.25%;
+			  height: 0;
+			  overflow: hidden;
+			  border-radius: 20px;
+			  margin-top: 30px;
+			}
+
+			.video-wrapper iframe {
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  left: 0;
+			  top: 0;
+			}
+			/* ===== INFO BOXES ===== */
+			.info-box {
+			  margin: 40px 0;
+			  padding: 25px 30px;
+			  border-radius: 20px;
+			  background: rgba(255,255,255,0.06);
+			  border: 1px solid var(--table-border);
+			  backdrop-filter: blur(8px);
+			  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+			  position: relative;
+			  overflow: hidden;
+			}
+
+			.info-box h3 {
+			  margin-top: 0;
+			  font-size: 22px;
+			  color: var(--accent);
+			}
+
+			.info-box p {
+			  margin: 10px 0 0 0;
+			  line-height: 1.6;
+			}
+
+			/* efekt świecącej krawędzi */
+			.info-box::before {
+			  content: "";
+			  position: absolute;
+			  top: 0;
+			  left: -100%;
+			  width: 100%;
+			  height: 3px;
+			  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+			  animation: glowSlide 4s linear infinite;
+			}
+
+			@keyframes glowSlide {
+			  0% { left: -100%; }
+			  100% { left: 100%; }
+			}
+
+			/* wersja ostrzegawcza */
+			.warning-box {
+			  border: 1px solid rgba(225, 6, 0, 0.6);
+			  background: rgba(225, 6, 0, 0.08);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="scrollBar"></div>
+		<header class="header">
+		  <img src="logo.png" class="logo" alt="Catty logo">
+
+		  <nav class="nav" id="nav">
+			<a href="/">Strona główna</a>
+			<a href="/omnie">O mnie</a>
+			<a href="/poradniki">Poradniki</a>
+			<a href="/tapety">Tapety</a>
+			<a href="https://drive.google.com/drive/folders/1UEIm6xAsAndbct4cCFC8PRB3uuuXTdv-?usp=sharing" target="_blank">Baza plików</a>
+		  </nav>
+
+		  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		  </div>
+		</header>
+
+		<div class="hero">
+		  <div class="hero-content fade-in">
+			<h1>Oficjalna strona Cattiego</h1>
+			<p>Poradniki - Jak zgrać film z płyty DVD?</p>
+		  </div>
+		</div>
+		<div class="content tutorial">
+		<div class="content fade-in">
+		<h1 style="margin-left:10px;">
+		  <a href="/poradniki">← Wróć</a>
+		</h1>
+		<h1 style="margin-left:10px;">Jak zgrać film z płyty DVD?</h1>
+		<p>Aby zgrać film z płyty DVD, potrzebujesz napęd DVD-ROM, (oczywiście) film na płycie DVD oraz 2 polecane przeze mnie programy:</p>
+		<ul>
+		<li><a href="https://www.cdrinfo.pl/download2.php?filename=software/bdlot-dvd-iso-master-setup.zip&id=1234114401&baza=soft&v=0">BDlot DVD ISO Master</a><br>
+		<li><a href="https://handbrake.fr/">HandBrake</a> lub jego fork - <a href="https://vidcoder.net/">VidCoder</a><br>
+		</ul>
+		<p>Ja bym osobiście polecił fork (VidCoder), ponieważ jest bardziej czytelny oraz lepiej zorganizowany i spolszczony.</p>
+		<div class="info-box warning-box">
+		  <h3>⚠️ Ważna informacja</h3>
+		  <p>
+			Rozpowszechnianie filmów zgranych w ten sposób jest przestępstwem.
+			Ten poradnik ma charakter edukacyjny — wykonuj takie operacje wyłącznie
+			na własny użytek prywatny.
+		  </p>
+		</div>
+		<h2>Część 1 - BDlot - zgrywanie płyty DVD do pliku ISO</h2>
+		<p>Włóż płytę do napędu</p>
+		<p>Uruchom program BDlot.</p>
+		<p>W programie ustaw zaznacz wszystkie opcje jak na obrazku:</p>
+		<img style="margin:10px;" src="bdlot-settings.jpg" width="900">
+		<p>Rozpocznij zgrywanie. W międzyczasie możesz sobie wypić kawkę, pójść na spacer... w sumie, rób co tylko chcesz!</p>
+		<p>WYJAŚNIENIE:</p>
+		<ul>
+		<li>Proces zgrywania zależy od prędkości Twojego napędu. Czas zgrywania zazwyczaj równa się długości zgrywanego filmu.<br>
+		</ul>
+		<h2>Część 2 - VidCoder - konwersja do MKV</h2>
+		<p>Gdy płyta już zostanie zgrana, możesz już wyjąć ją z napędu. Do programu VidCoder wrzuć utworzony plik ISO z filmem.</p>
+		<p>Program sam ustawi, że ma zgrać cały film. W ustawieniach języka wybierz język, w którym ma być film. Opcjonalnie dodaj napisy, jeśli film nie ma polskiego dubbingu/lektora.</p>
+		<img style="margin:10px;" src="vidcoder-language.jpg" width="800"><br>
+		<p>W ustawieniach enkodowania:</p>
+		<ul>
+		<li>W zakładce "Kodowanie obrazu" ustaw stałe 24 klatki na sekundę.<br>
+		<img style="margin:10px;" src="vidcoder-video.jpg" width="800">
+		<li>W zakładce "Filtry video" włącz usuwanie przeplotu: metoda Decomb, preset Bob.<br>
+		<img style="margin:10px;" src="vidcoder-deinterlacing.jpg" width="800">
+		<li>W zakładce "Wymiarowanie" ustaw rozdzielczość 1024x576 lub 720x576 w zależności, czy zgrywany przez Ciebie film jest w 4:3 czy 16:9. Wyłącz automatyczne kadrowanie, a rozdzielczość ustaw wcześniej na ręczną.<br>
+		<img style="margin:10px;" src="vidcoder-dimensions.jpg" width="800">
+		<li>W zakładce "Kontener" ustaw format MKV.<br>
+		<img style="margin:10px;" src="vidcoder-container.jpg" width="800">
+		</ul>
+		<p>Rozpocznij enkodowanie.<p>
+		</div>
+
+		<h2>Zobacz na YouTubie:</h2>
+		<div class="info-box">
+		  <h3>🎬 Film wkrótce</h3>
+		  <p>
+			Tutorial w wersji wideo pojawi się niedługo na moim kanale YouTube.
+			Będzie dokładne omówienie całego procesu krok po kroku.
+		  </p>
+		</div>
+		
+		<script>
+		function toggleMenu() {
+		  document.getElementById("nav").classList.toggle("active");
+		  document.getElementById("hamburger").classList.toggle("active");
+		}
+
+		window.onload = () => {
+		  if (localStorage.getItem("theme") === "light") {
+			document.body.classList.add("light");
+		  }
+		  updateIcon();
+		};
+
+		const observer = new IntersectionObserver(entries => {
+		  entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			  entry.target.classList.add("visible");
+			}
+		  });
+		}, {
+		  threshold: 0.2
+		});
+
+		document.querySelectorAll(".fade-in").forEach(el => {
+		  observer.observe(el);
+		});
+		</script>
+
+		</div>
+		<footer>
+		  © 2026 Catty • Made with ❤️ + HTML/CSS  
+		  <br>
+		  <a href="https://www.youtube.com/@CattiśUwU">YouTube</a> • <a href="https://discord.gg/sFk955h3zf">Discord</a> • <a href="https://instagram.com/youngcattyxd">Instagram</a>
+		</footer>
+	</body>
+</html>
+
