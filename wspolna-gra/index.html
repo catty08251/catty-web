@@ -1,8 +1,8 @@
 <html>
 	<head>
-		<title>Jak zgrać film z płyty DVD? - YoungCatty.ovh</title>
+		<title>Wspólna gra - YoungCatty.ovh</title>
 		<meta charset="UTF-8">
-		<meta property="og:title" content="Jak zgrać film z płyty DVD? - Poradniki - Catty" />
+		<meta property="og:title" content="Catty – technologia, retro, audio, gaming" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="http://youngcatty.ovh" />
 		<meta property="og:image" content="http://youngcatty.ovh/logo.png" />
@@ -17,7 +17,7 @@
 
 		<!-- Include this to make the og:image larger -->
 		<meta name="twitter:card" content="summary_large_image">
-			<style>
+		<style>
 			:root {
 			  --bg-main: #0b1020;
 			  --bg-gradient: linear-gradient(135deg, #0b1020, #1a1f3c, #7a0000);
@@ -68,8 +68,6 @@
 			.nav {
 			  display: flex;
 			  gap: 20px;
-			  position: relative;
-			  z-index: 999;
 			}
 
 			.nav a {
@@ -246,12 +244,6 @@
 			  --accent: #e10600;
 			}
 
-			.light {
-			  --card-bg: #ffffff;
-			  --table-bg: #f3f3f3;
-			  --table-border: #d0d0d0;
-			}
-
 			/* ===== ENTRY ANIMATION ===== */
 			.fade-in {
 			  opacity: 0;
@@ -272,127 +264,153 @@
 			  font-size: 14px;
 			}
 
-			.content {
-			  max-width: 1100px;
-			  margin: 40px auto;
-			  padding: 20px;
+			footer {
+			  margin-top: 80px;
+			  padding: 30px;
+			  text-align: center;
+			  background: rgba(0,0,0,0.3);
+			  font-size: 14px;
 			}
 
-			.content img {
-			  max-width: 100%;
-			  border-radius: 12px;
+			/* ===== MINECRAFT SERVER BOX ===== */
+
+			.server-section {
+			  display: flex;
+			  justify-content: center;
+			  margin: 80px 20px;
+			}
+
+			.server-box {
+			  max-width: 600px;
+			  width: 100%;
+			  padding: 40px;
+			  text-align: center;
+			  background: var(--card-bg);
+			  border-radius: 20px;
+			  backdrop-filter: blur(10px);
 			  border: 1px solid var(--table-border);
-			  margin: 20px 0;
+			  box-shadow: 0 0 30px rgba(0,0,0,0.4);
 			}
 
-			.content h2 {
-			  margin-top: 50px;
+			.server-box h2 {
+			  font-size: 30px;
+			  margin-bottom: 25px;
+			}
+
+			.server-info {
+			  display: grid;
+			  gap: 12px;
+			  font-size: 18px;
+			  margin-bottom: 25px;
+			}
+
+			.server-ip {
+			  font-size: 22px;
+			  font-weight: 700;
 			  color: var(--accent);
 			}
 
-			.content ul {
+			.copy-btn {
+			  padding: 10px 20px;
+			  border-radius: 12px;
+			  background: var(--accent);
+			  color: white;
+			  font-weight: 600;
+			  border: none;
+			  cursor: pointer;
+			  transition: 0.3s;
+			}
+
+			.copy-btn:hover {
+			  opacity: 0.85;
+			}
+
+			/* ===== MINECRAFT SERVER SECTION ===== */
+
+			.server-section {
+			  display: flex;
+			  justify-content: center;
+			  margin: 80px 20px;
+			}
+
+			.server-box {
+			  max-width: 650px;
+			  width: 100%;
+			  padding: 40px;
+			  text-align: center;
+
 			  background: var(--card-bg);
-			  padding: 20px;
-			  border-radius: 15px;
+			  border-radius: 20px;
+			  backdrop-filter: blur(10px);
+
+			  border: 1px solid var(--table-border);
+			  box-shadow: 0 0 35px rgba(0,0,0,0.5);
+
+			  position: relative;
+			  overflow: hidden;
+			}
+
+			.server-box h2 {
+			  font-size: 30px;
+			  margin-bottom: 25px;
+			}
+
+			.server-banner {
+			  width: 100%;
+			  border-radius: 14px;
+			  margin-bottom: 25px;
+			}
+
+			.server-icon {
+			  width: 70px;
+			  height: 70px;
+			  border-radius: 12px;
+			  margin-bottom: 15px;
 			  border: 1px solid var(--table-border);
 			}
 
-			.content iframe {
-			  max-width: 100%;
-			  border-radius: 12px;
+			.server-info {
+			  display: grid;
+			  gap: 10px;
+			  font-size: 18px;
+			  margin-bottom: 25px;
+			}
+
+			.server-ip {
+			  font-size: 24px;
+			  font-weight: 700;
+			  color: var(--accent);
+			}
+
+			.server-status {
+			  font-weight: 600;
+			}
+
+			.status-online {
+			  color: #4cff4c;
+			}
+
+			.status-offline {
+			  color: #ff4c4c;
+			}
+
+			.server-actions {
 			  margin-top: 20px;
 			}
 
-			.tutorial h1 {
-			  font-size: 36px;
-			  margin-bottom: 20px;
+			.copy-btn {
+			  padding: 12px 22px;
+			  border-radius: 12px;
+			  background: var(--accent);
+			  color: white;
+			  font-weight: 600;
+			  border: none;
+			  cursor: pointer;
+			  transition: 0.25s;
 			}
 
-			.tutorial h2 {
-			  margin-top: 50px;
-			  color: var(--accent);
-			}
-
-			.tutorial p {
-			  line-height: 1.7;
-			  margin: 15px 0;
-			}
-
-			.tutorial img {
-			  max-width: 100%;
-			  border-radius: 15px;
-			  border: 1px solid var(--table-border);
-			  margin: 20px 0;
-			}
-
-			.tutorial ul {
-			  background: var(--card-bg);
-			  padding: 20px;
-			  border-radius: 20px;
-			  border: 1px solid var(--table-border);
-			}
-
-			.video-wrapper {
-			  position: relative;
-			  padding-bottom: 56.25%;
-			  height: 0;
-			  overflow: hidden;
-			  border-radius: 20px;
-			  margin-top: 30px;
-			}
-
-			.video-wrapper iframe {
-			  position: absolute;
-			  width: 100%;
-			  height: 100%;
-			  left: 0;
-			  top: 0;
-			}
-			/* ===== INFO BOXES ===== */
-			.info-box {
-			  margin: 40px 0;
-			  padding: 25px 30px;
-			  border-radius: 20px;
-			  background: rgba(255,255,255,0.06);
-			  border: 1px solid var(--table-border);
-			  backdrop-filter: blur(8px);
-			  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-			  position: relative;
-			  overflow: hidden;
-			}
-
-			.info-box h3 {
-			  margin-top: 0;
-			  font-size: 22px;
-			  color: var(--accent);
-			}
-
-			.info-box p {
-			  margin: 10px 0 0 0;
-			  line-height: 1.6;
-			}
-
-			/* efekt świecącej krawędzi */
-			.info-box::before {
-			  content: "";
-			  position: absolute;
-			  top: 0;
-			  left: -100%;
-			  width: 100%;
-			  height: 3px;
-			  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-			  animation: glowSlide 4s linear infinite;
-			}
-
-			@keyframes glowSlide {
-			  0% { left: -100%; }
-			  100% { left: 100%; }
-			}
-
-			/* wersja ostrzegawcza */
-			.warning-box {
-			  border: 1px solid rgba(225, 6, 0, 0.6);
-			  background: rgba(225, 6, 0, 0.08);
+			.copy-btn:hover {
+			  transform: scale(1.05);
 			}
 		</style>
 	</head>
@@ -418,66 +436,107 @@
 		<div class="hero">
 		  <div class="hero-content fade-in">
 			<h1>Oficjalna strona Cattiego</h1>
-			<p>Poradniki - Jak zgrać film z płyty DVD?</p>
+			<p>Wspólna gra</p>
 		  </div>
 		</div>
-		<div class="content tutorial">
-		<div class="content fade-in">
-		<h1 style="margin-left:10px;">
-		  <a href="/poradniki">← Wróć</a>
-		</h1>
-		<h1 style="margin-left:10px;">Jak zgrać film z płyty DVD?</h1>
-		<p>Aby zgrać film z płyty DVD, potrzebujesz napęd DVD-ROM, (oczywiście) film na płycie DVD oraz 2 polecane przeze mnie programy:</p>
-		<ul>
-		<li><a href="https://www.cdrinfo.pl/download2.php?filename=software/bdlot-dvd-iso-master-setup.zip&id=1234114401&baza=soft&v=0">BDlot DVD ISO Master</a><br>
-		<li><a href="https://handbrake.fr/">HandBrake</a> lub jego fork - <a href="https://vidcoder.net/">VidCoder</a><br>
-		</ul>
-		<p>Ja bym osobiście polecił fork (VidCoder), ponieważ jest bardziej czytelny oraz lepiej zorganizowany i spolszczony.</p>
-		<div class="info-box warning-box">
-		  <h3>⚠️ Ważna informacja</h3>
-		  <p>
-			Rozpowszechnianie filmów zgranych w ten sposób jest przestępstwem.
-			Ten poradnik ma charakter edukacyjny — wykonuj takie operacje wyłącznie
-			na własny użytek prywatny.
-		  </p>
-		</div>
-		<h2>Część 1 - BDlot - zgrywanie płyty DVD do pliku ISO</h2>
-		<p>Włóż płytę do napędu</p>
-		<p>Uruchom program BDlot.</p>
-		<p>W programie ustaw zaznacz wszystkie opcje jak na obrazku:</p>
-		<img style="margin:10px;" src="bdlot-settings.jpg" width="900">
-		<p>Rozpocznij zgrywanie. W międzyczasie możesz sobie wypić kawkę, pójść na spacer... w sumie, rób co tylko chcesz!</p>
-		<p>WYJAŚNIENIE:</p>
-		<ul>
-		<li>Proces zgrywania zależy od prędkości Twojego napędu. Czas zgrywania zazwyczaj równa się długości zgrywanego filmu.<br>
-		</ul>
-		<h2>Część 2 - VidCoder - konwersja do MKV</h2>
-		<p>Gdy płyta już zostanie zgrana, możesz już wyjąć ją z napędu. Do programu VidCoder wrzuć utworzony plik ISO z filmem.</p>
-		<p>Program sam ustawi, że ma zgrać cały film. W ustawieniach języka wybierz język, w którym ma być film. Opcjonalnie dodaj napisy, jeśli film nie ma polskiego dubbingu/lektora.</p>
-		<img style="margin:10px;" src="vidcoder-language.jpg" width="800"><br>
-		<p>W ustawieniach enkodowania:</p>
-		<ul>
-		<li>W zakładce "Kodowanie obrazu" ustaw stałe 24 klatki na sekundę.<br>
-		<img style="margin:10px;" src="vidcoder-video.jpg" width="800">
-		<li>W zakładce "Filtry video" włącz usuwanie przeplotu: metoda Decomb, preset Bob.<br>
-		<img style="margin:10px;" src="vidcoder-deinterlacing.jpg" width="800">
-		<li>W zakładce "Wymiarowanie" ustaw rozdzielczość 1024x576 lub 720x576 w zależności, czy zgrywany przez Ciebie film jest w 4:3 czy 16:9. Wyłącz automatyczne kadrowanie, a rozdzielczość ustaw wcześniej na ręczną.<br>
-		<img style="margin:10px;" src="vidcoder-dimensions.jpg" width="800">
-		<li>W zakładce "Kontener" ustaw format MKV.<br>
-		<img style="margin:10px;" src="vidcoder-container.jpg" width="800">
-		</ul>
-		<p>Rozpocznij enkodowanie.<p>
-		</div>
-
-		<h2>Zobacz na YouTubie:</h2>
-		<div class="video-wrapper">
-		  <iframe 
-			src="https://www.youtube.com/embed/2WFd5PrZAGs?si=qXehiEgGUa0V3Clb"
-			allowfullscreen>
-		  </iframe>
 		</div>
 		
+		<section class="server-section fade-in">
+
+		  <div class="server-box">
+
+			<h2>🎮 Serwer Minecraft</h2>
+
+			<img class="server-banner" src="minecraft-banner.jpg" width="1200" height="400">
+			<center>Źródło tła: <a href="https://steamcommunity.com/workshop/filedetails/?l=polish&id=3120889551">steamcommunity.com</a></center>
+			<br>
+			<img id="serverIcon" class="server-icon" src="logo.png">
+
+			<div class="server-info">
+
+			  <div class="server-ip">
+				mc.youngcatty.ovh
+			  </div>
+
+			  <div id="serverStatus" class="server-status">
+				Sprawdzanie statusu...
+			  </div>
+
+			  <div id="playerCount">
+				👥 Gracze: ...
+			  </div>
+
+			  <div>
+				📦 Wersja: 1.21.x
+			  </div>
+
+			  <div>
+				🔒 Wymagane konto Minecraft Premium
+			  </div>
+
+			</div>
+
+			<div class="server-actions">
+			  <button class="copy-btn" onclick="copyIP()">
+				📋 Skopiuj IP
+			  </button>
+			</div>
+
+		  </div>
+
+		</section>
+		
+
+		
 		<script>
+		function copyIP() {
+
+		  navigator.clipboard.writeText("mc.youngcatty.ovh");
+
+		  alert("IP serwera skopiowane!");
+
+		}
+
+		/* ===== SERVER STATUS ===== */
+
+		fetch("https://api.mcsrvstat.us/2/mc.youngcatty.ovh")
+
+		.then(response => response.json())
+
+		.then(data => {
+
+		  const status = document.getElementById("serverStatus");
+		  const players = document.getElementById("playerCount");
+		  const icon = document.getElementById("serverIcon");
+
+		  if (data.online) {
+
+			status.innerHTML =
+			  "🟢 Status: <span class='status-online'>Online</span>";
+
+			players.innerHTML =
+			  "👥 Gracze: " + data.players.online + " / " + data.players.max;
+
+			if (data.icon) {
+			  icon.src = data.icon;
+			}
+
+		  } else {
+
+			status.innerHTML =
+			  "🔴 Status: <span class='status-offline'>Offline</span>";
+
+			players.innerHTML = "Serwer jest aktualnie wyłączony";
+
+		  }
+
+		});
+
+		function copyIP() {
+		  navigator.clipboard.writeText("mc.youngcatty.ovh");
+		  alert("IP serwera skopiowane!");
+		}
+
 		function toggleMenu() {
 		  document.getElementById("nav").classList.toggle("active");
 		  document.getElementById("hamburger").classList.toggle("active");
@@ -490,6 +549,12 @@
 		  updateIcon();
 		};
 
+		window.onload = () => {
+		  if (localStorage.getItem("theme") === "light") {
+			document.body.classList.add("light");
+			document.querySelector(".theme-btn").textContent = "☀️";
+		  }
+		};
 		const observer = new IntersectionObserver(entries => {
 		  entries.forEach(entry => {
 			if (entry.isIntersecting) {
@@ -505,7 +570,6 @@
 		});
 		</script>
 
-		</div>
 		<footer>
 		  © 2026 Catty • Made with ❤️ + HTML/CSS  
 		  <br>
