@@ -396,6 +396,52 @@
 			  background: rgba(0,0,0,0.3);
 			  font-size: 14px;
 			}
+			
+			/* ===== FRIENDS / PROJECTS SECTION ===== */
+
+			.friends-section,
+			.projects-section {
+			  max-width: 900px;
+			  margin: 80px auto;
+			  padding: 35px;
+
+			  background: var(--card-bg);
+			  border-radius: 18px;
+			  border: 1px solid var(--table-border);
+
+			  backdrop-filter: blur(10px);
+			  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+
+			  text-align: center;
+			}
+
+			.friends-section h2,
+			.projects-section h2 {
+			  margin-bottom: 30px;
+			}
+
+			.friends-grid {
+			  display: grid;
+			  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+			  gap: 25px;
+			  justify-items: center;
+			}
+
+			.friend-card img {
+			  width: 100px;
+			  height: 100px;
+			  border-radius: 14px;
+			  transition: 0.25s;
+			}
+
+			.friend-card img:hover {
+			  transform: scale(1.1);
+			}
+
+			.friend-name {
+			  margin-top: 8px;
+			  font-size: 14px;
+			}
 		</style>
 	</head>
 	<body>
@@ -494,7 +540,51 @@
 			</td>
 		  </tr>
 		</table>
+		
+		<section class="friends-section fade-in">
+
+		<h2>🤝 Moi dobrzy znajomi</h2>
+
+		<div class="friends-grid">
+
+		<a class="friend-card" href="https://fflynn.ovh/" target="_blank">
+		<img src="fflynn.jpg">
+		<div class="friend-name">FFlynn</div>
+		</a>
+
+		<a class="friend-card" href="https://kosssowskyyy--neocities.org/" target="_blank">
+		<img src="kosssa.jpg">
+		<div class="friend-name">Kosssowskyyy</div>
+		</a>
+
+		<a class="friend-card" href="https://klovy.systems/" target="_blank">
+		<img src="klovy.jpg">
+		<div class="friend-name">Klovy</div>
+		</a>
+
+		<a class="friend-card" href="https://open.spotify.com/artist/21O2fBGYj0iKP7qyHZRCat" target="_blank">
+		<img src="k-rys.jpg">
+		<div class="friend-name">K-Rys</div>
+		</a>
+		
 		</div>
+
+		</section>
+		
+		<section class="projects-section fade-in">
+
+		<h2>🚀 Projekty, w których uczestniczę</h2>
+
+		<div class="friends-grid">
+
+		<a class="friend-card" href="https://theprojectrecoveryteam.neocities.org/" target="_blank">
+		<img src="project-recovery.png">
+		<div class="friend-name">The Project Recovery Team</div>
+		</a>
+
+		</div>
+
+		</section>
 
 		<script>
 		function toggleMenu() {
