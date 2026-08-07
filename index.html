@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catty</title>
+<style>
+  :root{
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.18);
+    --text-main: #f5f6fa;
+    --text-sub: #c8c9d8;
+    --accent: #7c9cff;
+    --accent2: #ff7ce0;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{
+    height:100%;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    color:var(--text-main);
+    overflow-x:hidden;
+  }
+
+  body{
+    background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    background-size:400% 400%;
+    animation: gradientShift 18s ease infinite;
+    min-height:100vh;
+    position:relative;
+  }
+
+  @keyframes gradientShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  /* Pływające kule dekoracyjne */
+  .blob{
+    position:fixed;
+    border-radius:50%;
+    filter: blur(80px);
+    opacity:0.35;
+    z-index:0;
+    pointer-events:none;
+  }
+  .blob1{
+    width:400px;height:400px;
+    background:var(--accent);
+    top:-100px; left:-100px;
+    animation: float1 14s ease-in-out infinite;
+  }
+  .blob2{
+    width:350px;height:350px;
+    background:var(--accent2);
+    bottom:-100px; right:-80px;
+    animation: float2 16s ease-in-out infinite;
+  }
+  .blob3{
+    width:250px;height:250px;
+    background:#7cffb2;
+    top:40%; right:10%;
+    animation: float3 20s ease-in-out infinite;
+  }
+
+  @keyframes float1{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(60px,80px);}
+  }
+  @keyframes float2{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(-50px,-60px);}
+  }
+  @keyframes float3{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(-40px,30px) scale(1.15);}
+  }
+
+  /* Navbar */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:200;
+    display:flex;
+    justify-content:center;
+    padding:20px 15px;
+  }
+
+  .nav-glass{
+    display:flex;
+    gap:8px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border:1px solid var(--glass-border);
+    border-radius:50px;
+    padding:8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .nav-btn{
+    background:transparent;
+    border:none;
+    color:var(--text-sub);
+    padding:10px 22px;
+    border-radius:40px;
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    white-space:nowrap;
+  }
+
+  .nav-btn:hover{
+    color:var(--text-main);
+    background:rgba(255,255,255,0.08);
+  }
+
+  .nav-btn.active{
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color:#fff;
+    box-shadow: 0 4px 20px rgba(124,156,255,0.4);
+  }
+
+  /* HAMBURGER */
+  .hamburger-btn{
+    display:none;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border:1px solid var(--glass-border);
+    border-radius:16px;
+    width:52px;
+    height:52px;
+    cursor:pointer;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    position:relative;
+    z-index:250;
+  }
+
+  .hamburger-btn span{
+    display:block;
+    width:24px;
+    height:2.5px;
+    background:var(--text-main);
+    border-radius:2px;
+    transition: all 0.35s cubic-bezier(0.68,-0.55,0.27,1.55);
+  }
+
+  .hamburger-btn.open span:nth-child(1){
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .hamburger-btn.open span:nth-child(2){
+    opacity:0;
+  }
+  .hamburger-btn.open span:nth-child(3){
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  /* Overlay przyciemniający tło */
+  .nav-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(10,8,25,0.6);
+    backdrop-filter: blur(3px);
+    opacity:0;
+    pointer-events:none;
+    transition: opacity 0.35s ease;
+    z-index:150;
+  }
+  .nav-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:20px 20px 60px;
+    position:relative;
+    z-index:1;
+  }
+
+  .page{
+    display:none;
+    animation: fadeIn 0.5s ease;
+  }
+  .page.active{display:block;}
+
+  @keyframes fadeIn{
+    from{opacity:0; transform:translateY(15px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .glass-card{
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border:1px solid var(--glass-border);
+    border-radius:24px;
+    padding:35px;
+    margin-bottom:25px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-card:hover{
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+
+  /* Profil */
+  .profile-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:15px;
+  }
+
+  .avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+    font-weight:bold;
+    color:#fff;
+    border:4px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 30px rgba(124,156,255,0.4);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .avatar::after{
+    content:'';
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 4s infinite;
+  }
+
+  @keyframes shine{
+    0%{transform:rotate(0deg) translateX(-100%);}
+    100%{transform:rotate(0deg) translateX(100%);}
+  }
+
+  .nickname{
+    font-size:32px;
+    font-weight:700;
+    background: linear-gradient(135deg, #fff, var(--accent));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .section-title{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:18px;
+    color:var(--text-main);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+  }
+
+  .info-item{
+    background:rgba(255,255,255,0.06);
+    border-radius:16px;
+    padding:18px;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+
+  .info-item .label{
+    font-size:13px;
+    color:var(--text-sub);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+
+  .info-item .value{
+    font-size:20px;
+    font-weight:600;
+  }
+
+  .hobby-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    gap:14px;
+  }
+
+  .hobby-item{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:20px 15px;
+    text-align:center;
+    transition: all 0.3s ease;
+    cursor:default;
+  }
+
+  .hobby-item:hover{
+    background: linear-gradient(135deg, rgba(124,156,255,0.2), rgba(255,124,224,0.2));
+    transform:translateY(-4px);
+  }
+
+  .hobby-icon{
+    font-size:32px;
+    margin-bottom:8px;
+    display:block;
+  }
+
+  .social-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+  }
+
+  .social-link{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:16px 20px;
+    text-decoration:none;
+    color:var(--text-main);
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  }
+
+  .social-link.discord:hover{background:rgba(88,101,242,0.25); border-color:#5865F2;}
+  .social-link.youtube:hover{background:rgba(255,0,0,0.2); border-color:#FF0000;}
+  .social-link.instagram:hover{background:rgba(225,48,108,0.2); border-color:#E1306C;}
+
+  .social-icon{
+    font-size:28px;
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:rgba(255,255,255,0.1);
+  }
+
+  .social-text .platform{
+    font-weight:600;
+    font-size:16px;
+  }
+  .social-text .handle{
+    font-size:13px;
+    color:var(--text-sub);
+  }
+
+  /* Placeholder sekcje */
+  .placeholder-box{
+    text-align:center;
+    padding:60px 20px;
+  }
+
+  .placeholder-icon{
+    font-size:60px;
+    margin-bottom:20px;
+    opacity:0.6;
+  }
+
+  .placeholder-box h3{
+    font-size:24px;
+    margin-bottom:10px;
+    color:var(--text-main);
+  }
+
+  .placeholder-box p{
+    color:var(--text-sub);
+    font-size:15px;
+    max-width:400px;
+    margin:0 auto;
+  }
+
+  .badge-soon{
+    display:inline-block;
+    margin-top:20px;
+    padding:8px 20px;
+    border-radius:30px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.5px;
+  }
+
+  /* Stopka */
+  footer{
+    text-align:center;
+    padding:25px 20px;
+    color:var(--text-sub);
+    font-size:14px;
+    position:relative;
+    z-index:1;
+    border-top:1px solid rgba(255,255,255,0.08);
+    background:rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+  }
+
+  /* ===== RESPONSYWNOŚĆ / HAMBURGER MOBILNY ===== */
+  @media (max-width:650px){
+
+    nav{
+      justify-content:flex-end;
+      padding:16px 20px;
+    }
+
+    .hamburger-btn{
+      display:flex;
+    }
+
+    .nav-glass{
+      position:fixed;
+      top:80px;
+      right:20px;
+      left:20px;
+      flex-direction:column;
+      gap:6px;
+      padding:14px;
+      border-radius:24px;
+      transform: translateY(-20px) scale(0.95);
+      opacity:0;
+      pointer-events:none;
+      transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .nav-glass.open{
+      transform: translateY(0) scale(1);
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .nav-btn{
+      width:100%;
+      text-align:left;
+      padding:14px 18px;
+      font-size:16px;
+    }
+  }
+
+  @media (max-width:600px){
+    .glass-card{padding:22px;}
+    .avatar{width:110px;height:110px;font-size:44px;}
+    .nickname{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+<nav>
+  <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="nav-glass" id="navGlass">
+    <button class="nav-btn active" onclick="showPage('home', this)">🏠 Strona główna</button>
+    <button class="nav-btn" onclick="showPage('guides', this)">📖 Poradniki</button>
+    <button class="nav-btn" onclick="showPage('software', this)">💾 Biblioteka software'u</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- STRONA GŁÓWNA -->
+  <section id="home" class="page active">
+
+    <div class="glass-card">
+      <div class="profile-header">
+        <img src="web-images/catty.jpg" class="avatar" style="object-fit:cover;">
+        <div class="nickname">Catty</div>
+      </div>
+    </div>
+
+    <div class="glass-card">
+      <div class="section-title">👤 Informacje</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">Imię</div>
+          <div class="value">Michał</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Rok urodzenia</div>
+          <div class="value">2008</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card">
+      <div class="section-title">🎯 Zainteresowania / Hobby</div>
+      <div class="hobby-grid">
+        <div class="hobby-item"><span class="hobby-icon">💻</span>Informatyka</div>
+        <div class="hobby-item"><span class="hobby-icon">🎸</span>Rock / Metal</div>
+        <div class="hobby-item"><span class="hobby-icon">✈️</span>Podróżowanie</div>
+        <div class="hobby-item"><span class="hobby-icon">🚀</span>Filmy Sci-Fi</div>
+        <div class="hobby-item"><span class="hobby-icon">🚗</span>Motoryzacja (BMW)</div>
+        <div class="hobby-item"><span class="hobby-icon">🎮</span>Gaming</div>
+      </div>
+    </div>
+
+    <div class="glass-card">
+      <div class="section-title">🌐 Social Media</div>
+      <div class="social-grid">
+        <a href="https://discord.gg/x5X6nbaxav" target="_blank" class="social-link discord">
+          <span class="social-icon">🎮</span>
+          <div class="social-text">
+            <div class="platform">Discord</div>
+            <div class="handle">Dołącz do serwera</div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@CattyItsMe" target="_blank" class="social-link youtube">
+          <span class="social-icon">▶️</span>
+          <div class="social-text">
+            <div class="platform">YouTube</div>
+            <div class="handle">@CattyItsMe</div>
+          </div>
+        </a>
+        <a href="https://instagram.com/youngcattyxd" target="_blank" class="social-link instagram">
+          <span class="social-icon">📸</span>
+          <div class="social-text">
+            <div class="platform">Instagram</div>
+            <div class="handle">@youngcattyxd</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PORADNIKI -->
+  <section id="guides" class="page">
+    <div class="glass-card">
+      <div class="placeholder-box">
+        <div class="placeholder-icon">📖</div>
+        <h3>Sekcja poradników</h3>
+        <p>Tutaj wkrótce pojawią się poradniki dotyczące aplikacji i software'u na Windows.</p>
+        <span class="badge-soon">WKRÓTCE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIBLIOTEKA SOFTWARE -->
+  <section id="software" class="page">
+    <div class="glass-card">
+      <div class="placeholder-box">
+        <div class="placeholder-icon">💾</div>
+        <h3>Biblioteka software'u</h3>
+        <p>Tutaj wkrótce pojawią się aplikacje do pobrania na system Windows.</p>
+        <span class="badge-soon">WKRÓTCE</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Catty. Wszelkie prawa zastrzeżone.
+</footer>
+
+<script>
+  function showPage(pageId, btn){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    closeMenu();
+  }
+
+  function toggleMenu(){
+    const nav = document.getElementById('navGlass');
+    const btn = document.getElementById('hamburgerBtn');
+    const overlay = document.getElementById('navOverlay');
+
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+    overlay.classList.toggle('show');
+  }
+
+  function closeMenu(){
+    document.getElementById('navGlass').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+    document.getElementById('navOverlay').classList.remove('show');
+  }
+</script>
+
+</body>
+</html>
