@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catty</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catty</title>
+  <link rel="icon" type="image/x-icon" href="web-images/favicon.ico">
 <style>
   :root{
     --glass-bg: rgba(255,255,255,0.08);
@@ -355,6 +356,7 @@
   .social-link.discord:hover{background:rgba(88,101,242,0.25); border-color:#5865F2;}
   .social-link.youtube:hover{background:rgba(255,0,0,0.2); border-color:#FF0000;}
   .social-link.instagram:hover{background:rgba(225,48,108,0.2); border-color:#E1306C;}
+  .social-link.email:hover{background:rgba(124,156,255,0.2); border-color:var(--accent);}
 
   .social-icon{
     font-size:28px;
@@ -466,10 +468,172 @@
     }
   }
 
+  /* ========== SEKCJA SOFTWARE ========== */
+  .software-category{
+    margin-bottom:30px;
+  }
+
+  .category-title{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:15px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding-left:10px;
+    border-left:3px solid var(--accent);
+  }
+
+  .apps-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:16px;
+  }
+
+  .app-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:18px;
+    transition: all 0.3s ease;
+  }
+
+  .app-card:hover{
+    background: linear-gradient(135deg, rgba(124,156,255,0.15), rgba(255,124,224,0.15));
+    border-color:rgba(255,255,255,0.25);
+    transform:translateY(-4px);
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  }
+
+  .app-icon{
+    font-size:36px;
+    min-width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.15);
+  }
+
+  .app-info{
+    flex:1;
+  }
+
+  .app-info h4{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:4px;
+    color:var(--text-main);
+  }
+
+  .app-info p{
+    font-size:13px;
+    color:var(--text-sub);
+    margin-bottom:10px;
+    line-height:1.4;
+  }
+
+  .download-btn{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    transition: all 0.3s ease;
+    border:none;
+    cursor:pointer;
+  }
+
+  .download-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 4px 15px rgba(124,156,255,0.4);
+  }
+
+  .download-btn.disabled{
+    background:rgba(255,255,255,0.15);
+    cursor:not-allowed;
+    opacity:0.6;
+  }
+
+  footer{
+    text-align:center;
+    padding:25px 20px;
+    color:var(--text-sub);
+    font-size:14px;
+    position:relative;
+    z-index:1;
+    border-top:1px solid rgba(255,255,255,0.08);
+    background:rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+  }
+
+  @media (max-width:650px){
+
+    nav{
+      justify-content:flex-end;
+      padding:16px 20px;
+    }
+
+    .hamburger-btn{
+      display:flex;
+    }
+
+    .nav-glass{
+      position:fixed;
+      top:80px;
+      right:20px;
+      left:20px;
+      flex-direction:column;
+      gap:6px;
+      padding:14px;
+      border-radius:24px;
+      transform: translateY(-20px) scale(0.95);
+      opacity:0;
+      pointer-events:none;
+      transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .nav-glass.open{
+      transform: translateY(0) scale(1);
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .nav-btn{
+      width:100%;
+      text-align:left;
+      padding:14px 18px;
+      font-size:16px;
+    }
+  }
+
   @media (max-width:600px){
     .glass-card{padding:22px;}
     .avatar{width:110px;height:110px;font-size:44px;}
     .nickname{font-size:26px;}
+    .apps-grid{
+      grid-template-columns:1fr;
+    }
+    .app-card{
+      flex-direction:column;
+      text-align:center;
+    }
+    .app-icon{
+      min-width:80px;
+      height:80px;
+      font-size:40px;
+    }
+    .app-info p{
+      padding:0 10px;
+    }
   }
 </style>
 </head>
@@ -518,6 +682,10 @@
           <div class="label">Rok urodzenia</div>
           <div class="value">2008</div>
         </div>
+        <div class="info-item">
+          <div class="label">Schorzenia</div>
+          <div class="value">Cukrzyca typu 1., zespół Aspergera</div>
+        </div>
       </div>
     </div>
 
@@ -533,31 +701,38 @@
       </div>
     </div>
 
-    <div class="glass-card">
-      <div class="section-title">🌐 Social Media</div>
-      <div class="social-grid">
-        <a href="https://discord.gg/x5X6nbaxav" target="_blank" class="social-link discord">
-          <span class="social-icon">🎮</span>
-          <div class="social-text">
-            <div class="platform">Discord</div>
-            <div class="handle">Dołącz do serwera</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@CattyItsMe" target="_blank" class="social-link youtube">
-          <span class="social-icon">▶️</span>
-          <div class="social-text">
-            <div class="platform">YouTube</div>
-            <div class="handle">@CattyItsMe</div>
-          </div>
-        </a>
-        <a href="https://instagram.com/youngcattyxd" target="_blank" class="social-link instagram">
-          <span class="social-icon">📸</span>
-          <div class="social-text">
-            <div class="platform">Instagram</div>
-            <div class="handle">@youngcattyxd</div>
-          </div>
-        </a>
-      </div>
+    <div class="social-grid">
+      <a href="https://discord.gg/x5X6nbaxav" target="_blank" class="social-link discord">
+        <span class="social-icon">🎮</span>
+        <div class="social-text">
+          <div class="platform">Discord</div>
+          <div class="handle">Dołącz do serwera</div>
+        </div>
+      </a>
+      <a href="https://youtube.com/@CattyItsMe" target="_blank" class="social-link youtube">
+        <span class="social-icon">▶️</span>
+        <div class="social-text">
+          <div class="platform">YouTube</div>
+          <div class="handle">@CattyItsMe</div>
+        </div>
+      </a>
+      <a href="https://instagram.com/youngcattyxd" target="_blank" class="social-link instagram">
+        <span class="social-icon">📸</span>
+        <div class="social-text">
+          <div class="platform">Instagram</div>
+          <div class="handle">@youngcattyxd</div>
+        </div>
+      </a>
+
+      <!-- NOWA KARTA E-MAIL -->
+      <a href="mailto:kontakt.catty@proton.me" class="social-link email">
+        <span class="social-icon">✉️</span>
+        <div class="social-text">
+          <div class="platform">E-mail</div>
+          <div class="handle">kontakt.catty@proton.me</div>
+        </div>
+      </a>
+
     </div>
 
   </section>
@@ -576,14 +751,168 @@
 
   <!-- BIBLIOTEKA SOFTWARE -->
   <section id="software" class="page">
+    
     <div class="glass-card">
-      <div class="placeholder-box">
-        <div class="placeholder-icon">💾</div>
-        <h3>Biblioteka software'u</h3>
-        <p>Tutaj wkrótce pojawią się aplikacje do pobrania na system Windows.</p>
-        <span class="badge-soon">WKRÓTCE</span>
+      <div class="section-title">💾 Biblioteka Software'u</div>
+      <p style="color:var(--text-sub); margin-bottom:25px;">Wszystkie aplikacje są kompatybilne z systemem Windows. Kliknij "Pobierz", aby pobrać plik.</p>
+      
+      <!-- KATEGORIA: PRZEGLĄDARKI -->
+      <div class="software-category">
+        <div class="category-title">🌐 Przeglądarki</div>
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-icon">🦊</div>
+            <div class="app-info">
+              <h4>Mozilla Firefox</h4>
+              <p>Szybka i bezpieczna przeglądarka z dużą ilością rozszerzeń.</p>
+              <a href="https://www.firefox.com/pl/thanks/" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🦁</div>
+            <div class="app-info">
+              <h4>Brave</h4>
+              <p>Przeglądarka z blokadą reklam i funkcją płatności BAT.</p>
+              <a href="https://laptop-updates.brave.com/download/BRV090?bitness=64" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🌐</div>
+            <div class="app-info">
+              <h4>Tor Browser</h4>
+              <p>Anonimowa przeglądarka, chroni przed śledzeniem, inwigilacją i cenzurą.</p>
+              <a href="https://www.torproject.org/dist/torbrowser/15.0.19/tor-browser-windows-x86_64-portable-15.0.19.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- KATEGORIA: KOMUNIKATORY -->
+      <div class="software-category">
+        <div class="category-title">💬 Komunikatory</div>
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-icon">🎮</div>
+            <div class="app-info">
+              <h4>Discord</h4>
+              <p>Komunikator dla graczy z czatem głosowym i tekstowym.</p>
+              <a href="https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">💬</div>
+            <div class="app-info">
+              <h4>Klovy Chat</h4>
+              <p>Szybki i bezpieczny komunikator z funkcją kanałów.</p>
+              <a href="https://klovy.chat/downloads/Klovy-Chat-1.0.0-windows-x64-setup.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">📱</div>
+            <div class="app-info">
+              <h4>Signal</h4>
+              <p>Prywatny komunikator z szyfrowaniem end-to-end.</p>
+              <a href="https://signal.org/pl/download/" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KATEGORIA: GRY I ROZRYWKA -->
+      <div class="software-category">
+        <div class="category-title">🎮 Gry i Rozrywka</div>
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-icon">🖥️</div>
+            <div class="app-info">
+              <h4>Steam</h4>
+              <p>Największa platforma cyfrowej dystrybucji gier.</p>
+              <a href="https://cdn.fastly.steamstatic.com/client/installer/SteamSetup.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🎮</div>
+            <div class="app-info">
+              <h4>Epic Games Launcher</h4>
+              <p>Darmowe gry co tydzień i rywal platformy Steam.</p>
+              <a href="https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🕹️</div>
+            <div class="app-info">
+              <h4>GOG Galaxy</h4>
+              <p>Platforma cyfrowej dystrybucji gier bez DRM.</p>
+              <a href="https://www.gog.com/galaxy" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KATEGORIA: KREATYWNOŚĆ -->
+      <div class="software-category">
+        <div class="category-title">🖌️ Kreatywność</div>
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-icon">🌸️</div>
+            <div class="app-info">
+              <h4>DaVinci Resolve</h4>
+              <p>Profesjonalny program do montażu, obróbki kolorów, efektów i postprodukcji dźwięku.</p>
+              <a href="http://gofile.me/6KxCY/fIhvm7EFY" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🦌</div>
+            <div class="app-info">
+              <h4>GIMP</h4>
+              <p>Darmowy i otwarty edytor obrazów.</p>
+              <a href="https://www.gimp.org/downloads/" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🎧</div>
+            <div class="app-info">
+              <h4>Audacity</h4>
+              <p>Najpopularniejsza na świecie aplikacja do nagrywania i edycji dźwięku.</p>
+              <a href="https://github.com/audacity/audacity/releases/download/Audacity-3.7.8/audacity-win-3.7.8-64bit.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KATEGORIA: MULTIMEDIA -->
+      <div class="software-category">
+        <div class="category-title">💿 Multimedia</div>
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-icon">😾️</div>
+            <div class="app-info">
+              <h4>foobar2000</h4>
+              <p>Zaawansowany, darmowy odtwarzacz audio.</p>
+              <a href="https://www.foobar2000.org/downloads/foobar2000-x64_v2.25.10.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🔷</div>
+            <div class="app-info">
+              <h4>Kodi</h4>
+              <p>Darmowy odtwarzacz multimedialny i centrum rozrywki o otwartym kodzie źródłowym.</p>
+              <a href="https://kodi.tv/download/thanks/windows?url=https%3A%2F%2Fmirrors.kodi.tv%2Freleases%2Fwindows%2Fwin64%2Fkodi-21.3-Omega-x64.exe%3Fhttps%3D1" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+          <div class="app-card">
+            <div class="app-icon">🎬</div>
+            <div class="app-info">
+              <h4>Media Player Classic</h4>
+              <p>Niezwykle lekki odtwarzacz multimedialny typu open source.</p>
+              <a href="https://github.com/mpc-hc/mpc-hc/releases/download/1.7.13/MPC-HC.1.7.13.x64.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+
   </section>
 
 </main>
