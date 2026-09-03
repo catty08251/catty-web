@@ -38,7 +38,6 @@
     100%{background-position:0% 50%;}
   }
 
-  /* Pływające kule dekoracyjne */
   .blob{
     position:fixed;
     border-radius:50%;
@@ -79,7 +78,6 @@
     50%{transform:translate(-40px,30px) scale(1.15);}
   }
 
-  /* Navbar */
   nav{
     position:sticky;
     top:0;
@@ -99,15 +97,17 @@
     border-radius:50px;
     padding:8px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    flex-wrap:wrap;
+    justify-content:center;
   }
 
   .nav-btn{
     background:transparent;
     border:none;
     color:var(--text-sub);
-    padding:10px 22px;
+    padding:10px 20px;
     border-radius:40px;
-    font-size:15px;
+    font-size:14px;
     font-weight:500;
     cursor:pointer;
     transition: all 0.3s ease;
@@ -125,7 +125,6 @@
     box-shadow: 0 4px 20px rgba(124,156,255,0.4);
   }
 
-  /* HAMBURGER */
   .hamburger-btn{
     display:none;
     background: var(--glass-bg);
@@ -164,7 +163,6 @@
     transform: translateY(-7.5px) rotate(-45deg);
   }
 
-  /* Overlay przyciemniający tło */
   .nav-overlay{
     position:fixed;
     inset:0;
@@ -215,7 +213,6 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.35);
   }
 
-  /* Profil */
   .profile-header{
     display:flex;
     flex-direction:column;
@@ -373,12 +370,13 @@
     font-weight:600;
     font-size:16px;
   }
+
   .social-text .handle{
     font-size:13px;
     color:var(--text-sub);
+    word-break:break-all;
   }
 
-  /* Placeholder sekcje */
   .placeholder-box{
     text-align:center;
     padding:60px 20px;
@@ -414,61 +412,7 @@
     letter-spacing:0.5px;
   }
 
-  /* Stopka */
-  footer{
-    text-align:center;
-    padding:25px 20px;
-    color:var(--text-sub);
-    font-size:14px;
-    position:relative;
-    z-index:1;
-    border-top:1px solid rgba(255,255,255,0.08);
-    background:rgba(0,0,0,0.15);
-    backdrop-filter: blur(10px);
-  }
-
-  /* ===== RESPONSYWNOŚĆ / HAMBURGER MOBILNY ===== */
-  @media (max-width:650px){
-
-    nav{
-      justify-content:flex-end;
-      padding:16px 20px;
-    }
-
-    .hamburger-btn{
-      display:flex;
-    }
-
-    .nav-glass{
-      position:fixed;
-      top:80px;
-      right:20px;
-      left:20px;
-      flex-direction:column;
-      gap:6px;
-      padding:14px;
-      border-radius:24px;
-      transform: translateY(-20px) scale(0.95);
-      opacity:0;
-      pointer-events:none;
-      transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
-    }
-
-    .nav-glass.open{
-      transform: translateY(0) scale(1);
-      opacity:1;
-      pointer-events:auto;
-    }
-
-    .nav-btn{
-      width:100%;
-      text-align:left;
-      padding:14px 18px;
-      font-size:16px;
-    }
-  }
-
-  /* ========== SEKCJA SOFTWARE ========== */
+  /* ========== SOFTWARE ========== */
   .software-category{
     margin-bottom:30px;
   }
@@ -557,10 +501,133 @@
     box-shadow:0 4px 15px rgba(124,156,255,0.4);
   }
 
-  .download-btn.disabled{
-    background:rgba(255,255,255,0.15);
-    cursor:not-allowed;
-    opacity:0.6;
+  /* ========== SPRZĘT ========== */
+  .subheading{
+    font-size:16px;
+    font-weight:600;
+    color:var(--accent);
+    margin:25px 0 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .subheading:first-of-type{
+    margin-top:0;
+  }
+
+  .spec-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:14px;
+  }
+
+  .spec-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    transition: all 0.3s ease;
+  }
+
+  .spec-card:hover{
+    background: linear-gradient(135deg, rgba(124,156,255,0.15), rgba(255,124,224,0.15));
+    transform:translateY(-3px);
+  }
+
+  .spec-icon{
+    font-size:26px;
+    min-width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:rgba(255,255,255,0.1);
+  }
+
+  .spec-card .label{
+    font-size:11px;
+    color:var(--text-sub);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+
+  .spec-card .value{
+    font-size:15px;
+    font-weight:600;
+  }
+
+  /* ========== KOLEKCJA ========== */
+  .tag-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .tag-item{
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:30px;
+    padding:10px 18px;
+    font-size:14px;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition: all 0.3s ease;
+  }
+
+  .tag-item:hover{
+    background: linear-gradient(135deg, rgba(124,156,255,0.2), rgba(255,124,224,0.2));
+    transform:translateY(-3px);
+  }
+
+  .collection-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:14px;
+  }
+
+  .collection-item{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    transition: all 0.3s ease;
+  }
+
+  .collection-item:hover{
+    background: linear-gradient(135deg, rgba(124,156,255,0.15), rgba(255,124,224,0.15));
+    transform:translateY(-3px);
+  }
+
+  .collection-icon{
+    font-size:30px;
+    min-width:50px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:rgba(255,255,255,0.1);
+  }
+
+  .collection-info h5{
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:3px;
+  }
+
+  .collection-info span{
+    font-size:12.5px;
+    color:var(--text-sub);
   }
 
   footer{
@@ -575,7 +642,7 @@
     backdrop-filter: blur(10px);
   }
 
-  @media (max-width:650px){
+  @media (max-width:750px){
 
     nav{
       justify-content:flex-end;
@@ -634,6 +701,10 @@
     .app-info p{
       padding:0 10px;
     }
+    .collection-item{
+      flex-direction:column;
+      text-align:center;
+    }
   }
 </style>
 </head>
@@ -656,6 +727,7 @@
     <button class="nav-btn active" onclick="showPage('home', this)">🏠 Strona główna</button>
     <button class="nav-btn" onclick="showPage('guides', this)">📖 Poradniki</button>
     <button class="nav-btn" onclick="showPage('software', this)">💾 Biblioteka software'u</button>
+    <button class="nav-btn" onclick="showPage('gear', this)">🖥️ Sprzęt i Kolekcja</button>
   </div>
 </nav>
 
@@ -721,6 +793,13 @@
         <div class="social-text">
           <div class="platform">Instagram</div>
           <div class="handle">@youngcattyxd</div>
+        </div>
+      </a>
+      <a href="https://tipply.pl/@catty82" target="_blank" class="social-link instagram">
+        <span class="social-icon">🪙</span>
+        <div class="social-text">
+          <div class="platform">Przekaż darowiznę - Tipply</div>
+          <div class="handle">@catty82</div>
         </div>
       </a>
 
@@ -858,7 +937,7 @@
             <div class="app-info">
               <h4>DaVinci Resolve</h4>
               <p>Profesjonalny darmowy program do montażu.</p>
-              <a href="https://sw.blackmagicdesign.com/DaVinciResolve/v21.0.4/DaVinci_Resolve_21.0.4_Windows.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=GA/NWhZqS1I0aUG32vBxp4ykk2LV00gOmD+p4Tl5Hwv8L2k8oAwO8oghRBPUr/Y8UgaKycJcVZsGjIOeAuW3J7mk53gNipOJ3ZcwD0eE/aR7o8rxyuhcFZa3uGSB2V+0o7PuGtrLe9Ywn/KaI1QoPravzFonAYO2Gp8mIs6JSf6QmqYgNGpyeMhD4Y/dFQCcHx/GqYlI039LCg+DL+lD26YzhqKfHSzvYdTlPLrkWY/7R5bQM5x9JV60ZndiUqavLpAa2oFFnFndWzh3JHDDiWuXVvBqyq56+lZplLHlyb2Ou4j7XEdwjkxfxzApbzXeVUbQ3nywZw3JiSvL/hfLfg==&Expires=1786989493" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
+              <a href="https://archive.org/download/da-vinci-resolve-21.0.4-windows/DaVinci_Resolve_21.0.4_Windows.exe" class="download-btn" onclick="downloadFile(this)">⬇️ Pobierz</a>
             </div>
           </div>
           <div class="app-card">
@@ -915,6 +994,142 @@
 
   </section>
 
+  <!-- SPRZĘT I KOLEKCJA -->
+  <section id="gear" class="page">
+
+    <!-- SPRZĘT -->
+    <div class="glass-card">
+      <div class="section-title">🖥️ Mój Sprzęt</div>
+
+      <div class="subheading">🖳 Komputer stacjonarny</div>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <div class="spec-icon">⚙️</div>
+          <div>
+            <div class="label">Procesor</div>
+            <div class="value">i5 13400F</div>
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">🎮</div>
+          <div>
+            <div class="label">Karta graficzna</div>
+            <div class="value">RTX 4060</div>
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">🧠</div>
+          <div>
+            <div class="label">Pamięć RAM</div>
+            <div class="value">32 GB</div>
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">💾</div>
+          <div>
+            <div class="label">Dyski</div>
+            <div class="value">1 TB + 480 GB SSD</div>
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">🪟</div>
+          <div>
+            <div class="label">System</div>
+            <div class="value">Windows 11 Pro</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subheading">📱 Telefon (główny)</div>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <div class="spec-icon">📲</div>
+          <div>
+            <div class="label">Model</div>
+            <div class="value">Samsung Galaxy S26 5G</div>
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">💽</div>
+          <div>
+            <div class="label">Pamięć</div>
+            <div class="value">12 / 256 GB</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KOLEKCJA -->
+    <div class="glass-card">
+      <div class="section-title">📦 Kolekcja</div>
+
+      <div class="subheading">📱 Telefony</div>
+      <div class="tag-list">
+        <div class="tag-item">📞 Nokia 6310i</div>
+        <div class="tag-item">🍎 iPhone 4</div>
+        <div class="tag-item">🍎 iPhone 5</div>
+        <div class="tag-item">🍎 iPhone 7</div>
+        <div class="tag-item">📞 Nokia 150</div>
+        <div class="tag-item">🤖 Samsung Galaxy A40</div>
+        <div class="tag-item">🤖 Samsung Galaxy S23 FE 5G</div>
+      </div>
+
+      <div class="subheading">💻 Laptopy</div>
+      <div class="collection-grid">
+        <div class="collection-item">
+          <div class="collection-icon">💻</div>
+          <div class="collection-info">
+            <h5>MacBook Pro 11,1</h5>
+            <span>2014 • 13 cali</span>
+          </div>
+        </div>
+        <div class="collection-item">
+          <div class="collection-icon">💻</div>
+          <div class="collection-info">
+            <h5>MacBook Pro 11,4</h5>
+            <span>2015 • 15 cali</span>
+          </div>
+        </div>
+        <div class="collection-item">
+          <div class="collection-icon">💻</div>
+          <div class="collection-info">
+            <h5>MacBook</h5>
+            <span>2009 • 13 cali</span>
+          </div>
+        </div>
+        <div class="collection-item">
+          <div class="collection-icon">💻</div>
+          <div class="collection-info">
+            <h5>Microsoft Surface Laptop Go</h5>
+            <span>2020 • 12,8 cala</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subheading">🎮 Konsole</div>
+      <div class="collection-grid">
+        <div class="collection-item">
+          <div class="collection-icon">🎮</div>
+          <div class="collection-info">
+            <h5>Xbox 360 Slim E</h5>
+            <span>~20 gier • 10 na Kinecta</span>
+          </div>
+        </div>
+        <div class="collection-item">
+          <div class="collection-icon">🕹️</div>
+          <div class="collection-info">
+            <h5>Nintendo Switch v1</h5>
+            <span>5 gier fizycznych • 30 cyfrowych</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
 </main>
 
 <footer>
@@ -946,6 +1161,15 @@
     document.getElementById('navGlass').classList.remove('open');
     document.getElementById('hamburgerBtn').classList.remove('open');
     document.getElementById('navOverlay').classList.remove('show');
+  }
+
+  function downloadFile(btn){
+    const appName = btn.closest('.app-card').querySelector('h4').textContent;
+    if (!btn.href || btn.href === '#'){
+      alert(`${appName} - plik nie został jeszcze dodany. Zostanie udostępniony wkrótce!`);
+      return false;
+    }
+    return true;
   }
 </script>
 
